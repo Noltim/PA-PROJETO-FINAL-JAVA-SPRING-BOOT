@@ -1,0 +1,48 @@
+CREATE TABLE OBRA
+(
+    ID            INTEGER PRIMARY KEY AUTO_INCREMENT,
+    NOME          VARCHAR(45),
+    ANOCONSTRUCAO VARCHAR(45),
+    COORDENACAO   VARCHAR(45),
+    GERENCIA      VARCHAR(45),
+    DIRETORIA     VARCHAR(45),
+    OUTORGA       VARCHAR(45),
+    TITULARIDADE  VARCHAR(45)
+);
+
+CREATE TABLE ObraLocalizacao
+(
+    ID        INTEGER PRIMARY KEY AUTO_INCREMENT,
+    CIDADE    VARCHAR(45),
+    obraId    INTEGER REFERENCES OBRA (ID),
+    ESTADO    VARCHAR(45),
+    LATITUDE  VARCHAR(45),
+    LONGITUDE VARCHAR(45)
+
+);
+
+CREATE TABLE ObraDetalhesTecnicos
+(
+    ID     INTEGER PRIMARY KEY AUTO_INCREMENT,
+    obraId INTEGER REFERENCES OBRA (ID),
+    tipo   VARCHAR(45),
+    risco  VARCHAR(45)
+);
+
+CREATE TABLE ObraInspecao
+(
+    ID         INTEGER PRIMARY KEY AUTO_INCREMENT,
+    obraId     INTEGER REFERENCES OBRA (ID),
+    frequencia VARCHAR(45),
+    mes        VARCHAR(45),
+    status     VARCHAR(45),
+    PRIORIDADE INT
+);
+
+CREATE TABLE Inspecao
+(
+    ID             INTEGER PRIMARY KEY AUTO_INCREMENT,
+    obraInspecaoId INTEGER REFERENCES ObraInspecao (ID),
+    dataInspecao   DATE,
+    observacoes    varchar(900)
+);
