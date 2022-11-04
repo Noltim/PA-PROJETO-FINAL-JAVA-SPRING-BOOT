@@ -1,10 +1,17 @@
 package com.obra.obras.domain.entity;
 
+import javax.persistence.*;
+
 //modelo
+@Entity
+@Table(name = "obra")
 public class Obra {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nome;
+   //no banco anoCconstrucao ta passando como ano_construcao
     private Integer anoConstrucao;
     private String coordenacao;
     private String gerencia;
@@ -27,8 +34,7 @@ public class Obra {
         this.nome = nome;
     }
 
-    public Obra(Integer id, String nome, Integer anoConstrucao, String coordenacao, String gerencia, String diretoria, String outorga, String titularidade) {
-        this.id = id;
+    public Obra(String nome, Integer anoConstrucao, String coordenacao, String gerencia, String diretoria, String outorga, String titularidade) {
         this.nome = nome;
         this.anoConstrucao = anoConstrucao;
         this.coordenacao = coordenacao;

@@ -1,6 +1,8 @@
 package com.obra.obras.domain.entity;
 
+
 public class ObraLocalizacao {
+
     private Integer id;
     private String cidade;
     private Obra obraId;

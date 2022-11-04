@@ -1,8 +1,11 @@
 package com.obra.obras.domain.entity;
 
+
 import java.time.LocalDate;
 
+
 public class Inspecao {
+
 
     private Integer id;
     private ObraInspecao obraInspecaoId;

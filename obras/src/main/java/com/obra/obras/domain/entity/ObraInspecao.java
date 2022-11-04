@@ -1,6 +1,10 @@
 package com.obra.obras.domain.entity;
 
+
+
+
 public class ObraInspecao {
+
 
     private Integer id;
     private Obra obraId;

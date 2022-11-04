@@ -18,28 +18,28 @@ public class ObrasApplication {
     public CommandLineRunner init(@Autowired Obras obras) {
         return args -> {
             System.out.println("Salvando clientes/obras");
-            //forma antiga
+//            forma antiga
             Obra obra = new Obra();
             obra.setNome("Reforma no teste");
             obras.salvar(obra);
 
             //forma com construtor
-            obras.salvar(new Obra("Reforma da Reforma no teste"));
+            obras.salvar(new Obra("Reforma da Reforma no teste", 102,"1","2","3","4","5"));
 
             List<Obra> todosClientes = obras.obterTodos();
             todosClientes.forEach(System.out::println);
 
-            System.out.println("Atualizando clientes/obras");
-            todosClientes.forEach(c -> {
-                c.setNome(c.getNome() + " atualizado");
-                obras.atualizar(c);
-            });
-
-            todosClientes = obras.obterTodos();
-            todosClientes.forEach(System.out::println);
-
-            System.out.println("Buscando clientes/obras");
-            obras.buscarPorNome("da").forEach(System.out::println);
+//            System.out.println("Atualizando clientes/obras");
+//            todosClientes.forEach(c -> {
+//                c.setNome(c.getNome() + " atualizado");
+//                obras.atualizar(c);
+//            });
+//
+//            todosClientes = obras.obterTodos();
+//            todosClientes.forEach(System.out::println);
+//
+//            System.out.println("Buscando clientes/obras");
+//            obras.buscarPorNome("da").forEach(System.out::println);
 
 //            System.out.println("Deletando clientes/obras");
 //

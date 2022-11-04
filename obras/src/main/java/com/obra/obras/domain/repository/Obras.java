@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+
+import javax.persistence.EntityManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -14,15 +17,19 @@ import java.util.List;
 @Repository
 public class Obras {
 
-    private static String INSERT = " insert into obra (nome) values (?) ";
-    private static String SELECT_ALL = "SELECT * FROM OBRA";
+
+    private static String SELECT_ALL = "SELECT * FROM obra";
     private static String UPDATE = "update obra set nome = ? where id = ?";
     private static String DELETE = "delete from obra where id = ?";
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private EntityManager entityManager;
+
+    @Transactional
     public Obra salvar(Obra obra) {
-        jdbcTemplate.update(INSERT, new Object[]{obra.getNome()});
+        entityManager.persist(obra);
         return obra;
     }
 
@@ -55,16 +62,16 @@ public class Obras {
         return new RowMapper<Obra>() {
             @Override
             public Obra mapRow(ResultSet rs, int rowNum) throws SQLException {
-                Integer id = rs.getInt("id");
+
                 String nome = rs.getString("nome");
-                Integer anoConstrucao = rs.getInt("anoConstrucao");
+                Integer anoConstrucao = rs.getInt("ano_construcao");
                 String coordenacao = rs.getString("coordenacao");
                 String gerencia = rs.getString("gerencia");
                 String diretoria = rs.getString("diretoria");
                 String outorga = rs.getString("outorga");
                 String titularidade = rs.getString("titularidade");
 
-                return new Obra(id, nome, anoConstrucao, coordenacao, gerencia, diretoria, outorga, titularidade);
+                return new Obra( nome, anoConstrucao, coordenacao, gerencia, diretoria, outorga, titularidade);
             }
         };
     }
