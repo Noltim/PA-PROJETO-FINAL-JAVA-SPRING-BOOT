@@ -22,6 +22,11 @@ public class Obra {
         this.nome = nome;
     }
 
+    public Obra(Integer id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
+
     public Obra(Integer id, String nome, Integer anoConstrucao, String coordenacao, String gerencia, String diretoria, String outorga, String titularidade) {
         this.id = id;
         this.nome = nome;

@@ -16,16 +16,43 @@ public class Obras {
 
     private static String INSERT = " insert into obra (nome) values (?) ";
     private static String SELECT_ALL = "SELECT * FROM OBRA";
+    private static String UPDATE = "update obra set nome = ? where id = ?";
+    private static String DELETE = "delete from obra where id = ?";
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public Obra salvar(Obra obra){
-       jdbcTemplate.update( INSERT, new Object[]{obra.getNome()} );
-       return obra;
-    };
+    public Obra salvar(Obra obra) {
+        jdbcTemplate.update(INSERT, new Object[]{obra.getNome()});
+        return obra;
+    }
 
-    public List<Obra> obterTodos(){
-        return jdbcTemplate.query(SELECT_ALL, new RowMapper<Obra>() {
+    public Obra atualizar(Obra obra) {
+        jdbcTemplate.update(UPDATE, new Object[]{
+                obra.getNome(),
+                obra.getId()});
+        return obra;
+    }
+
+    public void deletar(Obra obra) {
+        deletar(obra.getId());
+    }
+
+    public void deletar(Integer id) {
+        jdbcTemplate.update(DELETE, new Object[]{id});
+    }
+
+    public List<Obra> buscarPorNome(String nome) {
+        return jdbcTemplate.query(SELECT_ALL.concat(" where nome like ?"),
+                new Object[]{"%" + nome + "%"},
+                getObraRowMapper());
+    }
+
+    public List<Obra> obterTodos() {
+        return jdbcTemplate.query(SELECT_ALL, getObraRowMapper());
+    }
+
+    private static RowMapper<Obra> getObraRowMapper() {
+        return new RowMapper<Obra>() {
             @Override
             public Obra mapRow(ResultSet rs, int rowNum) throws SQLException {
                 Integer id = rs.getInt("id");
@@ -39,6 +66,7 @@ public class Obras {
 
                 return new Obra(id, nome, anoConstrucao, coordenacao, gerencia, diretoria, outorga, titularidade);
             }
-        });
+        };
     }
 }
+

@@ -1,5 +1,7 @@
 package com.obra.obras.domain.entity;
 
+import javax.persistence.OneToMany;
+
 public class ObraDetalhesTecnicos {
 
     private Integer id;
