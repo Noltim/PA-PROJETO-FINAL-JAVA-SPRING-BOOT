@@ -1,13 +1,17 @@
 package com.obra.obras.domain.entity;
 
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
-
+@Entity
 public class Inspecao {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @ManyToOne
     private ObraInspecao obraInspecaoId;
     private LocalDate data;
     private String observacoes;

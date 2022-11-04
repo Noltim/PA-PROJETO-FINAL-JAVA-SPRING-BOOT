@@ -9,7 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.List;
+
 
 @SpringBootApplication
 public class ObrasApplication {
@@ -21,38 +21,15 @@ public class ObrasApplication {
 //            forma antiga
             Obra obra = new Obra();
             obra.setNome("Reforma no teste");
-            obras.salvar(obra);
+            obras.save(obra);
 
             //forma com construtor
-            obras.salvar(new Obra("Reforma da Reforma no teste", 102,"1","2","3","4","5"));
+            obras.save(new Obra("Reforma da Reforma no teste", 102,"1","2","3","4","5"));
 
-            List<Obra> todosClientes = obras.obterTodos();
-            todosClientes.forEach(System.out::println);
+            boolean existe = obras.existsByNome("Reforma no teste");
+            System.out.println("Existe um cliente com o nome 'Reforma da'? "+ existe);
 
-//            System.out.println("Atualizando clientes/obras");
-//            todosClientes.forEach(c -> {
-//                c.setNome(c.getNome() + " atualizado");
-//                obras.atualizar(c);
-//            });
-//
-//            todosClientes = obras.obterTodos();
-//            todosClientes.forEach(System.out::println);
-//
-//            System.out.println("Buscando clientes/obras");
-//            obras.buscarPorNome("da").forEach(System.out::println);
 
-//            System.out.println("Deletando clientes/obras");
-//
-//            obras.obterTodos().forEach(c -> {
-//                obras.deletar(c);
-//            });
-//
-//            todosClientes = obras.obterTodos();
-//            if (todosClientes.isEmpty()) {
-//                System.out.println("Nenhuma obra/cliente encontrado!");
-//            } else {
-//                todosClientes.forEach(System.out::println);
-//            }
         };
     }
 

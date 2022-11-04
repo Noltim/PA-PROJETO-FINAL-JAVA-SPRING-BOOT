@@ -1,11 +1,15 @@
 package com.obra.obras.domain.entity;
 
 
+import javax.persistence.*;
 
+@Entity
 public class ObraDetalhesTecnicos {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @ManyToOne
     private Obra obraId;
     private String tipo;
     private String risco;

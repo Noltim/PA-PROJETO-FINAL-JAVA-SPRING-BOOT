@@ -1,10 +1,15 @@
 package com.obra.obras.domain.entity;
 
+import javax.persistence.*;
 
+@Entity
 public class ObraLocalizacao {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String cidade;
+    @ManyToOne
     private Obra obraId;
     private String estado;
     private String latitude;
