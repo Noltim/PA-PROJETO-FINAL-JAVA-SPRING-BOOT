@@ -9,7 +9,7 @@ public class ObraInspecao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @ManyToOne
+    @OneToOne
     private Obra obraId;
     private String frequencia;
     private int mes;

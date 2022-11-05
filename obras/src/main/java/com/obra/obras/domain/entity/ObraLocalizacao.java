@@ -9,7 +9,7 @@ public class ObraLocalizacao {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String cidade;
-    @ManyToOne
+    @OneToOne
     private Obra obraId;
     private String estado;
     private String latitude;
