@@ -10,6 +10,7 @@ public class ObraLocalizacao {
     private Integer id;
     private String cidade;
     @OneToOne
+    @JoinColumn(name = "obra_id", referencedColumnName="id")
     private Obra obraId;
     private String estado;
     private String latitude;

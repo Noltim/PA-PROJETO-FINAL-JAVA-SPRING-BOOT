@@ -2,6 +2,7 @@ package com.obra.obras.domain.entity;
 
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class ObraInspecao {
@@ -10,11 +11,24 @@ public class ObraInspecao {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @OneToOne
+    @JoinColumn(name = "obra_id", referencedColumnName="id")
     private Obra obraId;
     private String frequencia;
     private int mes;
     private String status;
     private int prioridade;
+
+    @OneToMany(mappedBy = "obraInspecaoId")
+    private Set<Inspecao> inspecoes;
+    public Set<Inspecao> getInspecoes() {
+        return inspecoes;
+    }
+
+    public void setInspecoes(Set<Inspecao> inspecoes) {
+        this.inspecoes = inspecoes;
+    }
+
+
 
     public Integer getId() {
         return id;

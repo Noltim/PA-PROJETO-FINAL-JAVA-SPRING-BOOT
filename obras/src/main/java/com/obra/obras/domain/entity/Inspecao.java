@@ -12,6 +12,7 @@ public class Inspecao {
     private Integer id;
 
     @ManyToOne
+    @JoinColumn(name = "obra_inspecao_id", referencedColumnName="id")
     private ObraInspecao obraInspecaoId;
     private LocalDate data;
     private String observacoes;

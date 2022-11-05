@@ -10,6 +10,7 @@ public class ObraDetalhesTecnicos {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @ManyToOne
+    @JoinColumn(name = "obra_id", referencedColumnName="id")
     private Obra obraId;
     private String tipo;
     private String risco;

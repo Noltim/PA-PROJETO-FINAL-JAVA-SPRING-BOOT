@@ -1,6 +1,8 @@
 package com.obra.obras.domain.entity;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 //modelo
 @Entity
@@ -11,13 +13,52 @@ public class Obra {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nome;
-   //no banco anoCconstrucao ta passando como ano_construcao
+    //no banco anoCconstrucao ta passando como ano_construcao
     private Integer anoConstrucao;
     private String coordenacao;
     private String gerencia;
     private String diretoria;
     private String outorga;
     private String titularidade;
+
+    //ligações para busca
+    //verificar com o professor isso
+    @OneToMany
+    private Set<ObraLocalizacao> obrasLocalizacoes;
+
+    @OneToMany(mappedBy = "obraId")
+    private Set<ObraDetalhesTecnicos> obraDetalhesTecnicos;
+
+    @OneToOne(mappedBy = "obraId")
+    private ObraInspecao obraInspecoes;
+
+
+    public Set<ObraLocalizacao> getObrasLocalizacoes() {
+        return obrasLocalizacoes;
+    }
+
+    public void setObrasLocalizacoes(Set<ObraLocalizacao> obrasLocalizacoes) {
+        this.obrasLocalizacoes = obrasLocalizacoes;
+    }
+
+    public Set<ObraDetalhesTecnicos> getObraDetalhesTecnicos() {
+        return obraDetalhesTecnicos;
+    }
+
+    public void setObraDetalhesTecnicos(Set<ObraDetalhesTecnicos> obraDetalhesTecnicos) {
+        this.obraDetalhesTecnicos = obraDetalhesTecnicos;
+    }
+
+    public ObraInspecao getObraInspecoes() {
+        return obraInspecoes;
+    }
+
+    public void setObraInspecoes(ObraInspecao obraInspecoes) {
+        this.obraInspecoes = obraInspecoes;
+    }
+
+//até aqui
+
 
     //construtores
 
@@ -112,15 +153,6 @@ public class Obra {
     //vamos usar para imprimir
     @Override
     public String toString() {
-        return "Obra{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", anoConstrucao=" + anoConstrucao +
-                ", coordenacao='" + coordenacao + '\'' +
-                ", gerencia='" + gerencia + '\'' +
-                ", diretoria='" + diretoria + '\'' +
-                ", outorga='" + outorga + '\'' +
-                ", titularidade='" + titularidade + '\'' +
-                '}';
+        return "Obra{" + "id=" + id + ", nome='" + nome + '\'' + ", anoConstrucao=" + anoConstrucao + ", coordenacao='" + coordenacao + '\'' + ", gerencia='" + gerencia + '\'' + ", diretoria='" + diretoria + '\'' + ", outorga='" + outorga + '\'' + ", titularidade='" + titularidade + '\'' + '}';
     }
 }
