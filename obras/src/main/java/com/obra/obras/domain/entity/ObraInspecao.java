@@ -18,7 +18,7 @@ public class ObraInspecao {
     private String status;
     private int prioridade;
 
-    @OneToMany(mappedBy = "obraInspecaoId")
+    @OneToMany(mappedBy = "obraInspecaoId", fetch = FetchType.LAZY)
     private Set<Inspecao> inspecoes;
     public Set<Inspecao> getInspecoes() {
         return inspecoes;
