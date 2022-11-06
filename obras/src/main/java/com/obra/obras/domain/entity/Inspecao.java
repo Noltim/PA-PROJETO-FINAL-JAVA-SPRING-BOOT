@@ -17,6 +17,17 @@ public class Inspecao {
     private LocalDate data;
     private String observacoes;
 
+
+    public Inspecao() {
+    }
+
+    public Inspecao(Integer id, ObraInspecao obraInspecaoId, LocalDate data, String observacoes) {
+        this.id = id;
+        this.obraInspecaoId = obraInspecaoId;
+        this.data = data;
+        this.observacoes = observacoes;
+    }
+
     public Integer getId() {
         return id;
     }

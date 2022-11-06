@@ -16,6 +16,19 @@ public class ObraLocalizacao {
     private String latitude;
     private String longitude;
 
+
+    public ObraLocalizacao() {
+    }
+
+    public ObraLocalizacao(Integer id, String cidade, Obra obraId, String estado, String latitude, String longitude) {
+        this.id = id;
+        this.cidade = cidade;
+        this.obraId = obraId;
+        this.estado = estado;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
     public Integer getId() {
         return id;
     }

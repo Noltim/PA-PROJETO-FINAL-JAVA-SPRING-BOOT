@@ -20,6 +20,21 @@ public class ObraInspecao {
 
     @OneToMany(mappedBy = "obraInspecaoId", fetch = FetchType.LAZY)
     private Set<Inspecao> inspecoes;
+
+
+    public ObraInspecao() {
+    }
+
+    public ObraInspecao(Integer id, Obra obraId, String frequencia, int mes, String status, int prioridade, Set<Inspecao> inspecoes) {
+        this.id = id;
+        this.obraId = obraId;
+        this.frequencia = frequencia;
+        this.mes = mes;
+        this.status = status;
+        this.prioridade = prioridade;
+        this.inspecoes = inspecoes;
+    }
+
     public Set<Inspecao> getInspecoes() {
         return inspecoes;
     }

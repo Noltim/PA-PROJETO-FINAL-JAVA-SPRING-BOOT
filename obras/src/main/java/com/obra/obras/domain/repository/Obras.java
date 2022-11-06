@@ -19,5 +19,7 @@ public interface Obras extends JpaRepository<Obra, Integer> {
     void deleteByNome(String nome);
 
     boolean existsByNome(String nome);
+
+
 }
 

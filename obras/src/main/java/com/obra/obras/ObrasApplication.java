@@ -1,12 +1,8 @@
 package com.obra.obras;
 
 
-import com.obra.obras.domain.entity.Inspecao;
-import com.obra.obras.domain.entity.Obra;
-import com.obra.obras.domain.entity.ObraInspecao;
-import com.obra.obras.domain.repository.Inspecoes;
-import com.obra.obras.domain.repository.ObraInspecoes;
-import com.obra.obras.domain.repository.Obras;
+import com.obra.obras.domain.entity.*;
+import com.obra.obras.domain.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -20,40 +16,33 @@ import java.time.LocalDate;
 public class ObrasApplication {
 
     @Bean
-    public CommandLineRunner init(
+    public CommandLineRunner commandLineRunner(
             @Autowired Obras obras,
-            @Autowired ObraInspecoes obrasInpescoes,
-            @Autowired Inspecoes inspecoes) {
-
-
+            @Autowired Inspecoes inspecoes,
+            @Autowired ObraDetalhesTecnicosRep obraDetalhesTecnicosRep,
+            @Autowired ObraInspecoes obraInspecoes,
+            @Autowired ObraLocalizacoes obraLocalizacoes
+    ) {
         return args -> {
-            System.out.println("Salvando clientes/obras");
-//            forma antiga
-            Obra obra = new Obra();
-            obra.setNome("Reforma no teste");
-            obras.save(obra);
+            Obra voz = new Obra(null, "Voz de Veludo");
+            obras.save(voz);
 
-            //molde teste
-            Obra Reforma = new Obra("Nova Reforma");
-            obras.save(Reforma);
+            ObraDetalhesTecnicos det = new ObraDetalhesTecnicos();
+            det.setObraId(voz);
+            obraDetalhesTecnicosRep.save(det);
 
-            ObraInspecao insp = new ObraInspecao();
-            insp.setObraId(Reforma);
+            ObraInspecao o = new ObraInspecao();
+            o.setObraId(voz);
+            obraInspecoes.save(o);
 
-            obrasInpescoes.save(insp);
+            Inspecao bugiganga = new Inspecao(null, null, LocalDate.now(), null);
+            bugiganga.setObraInspecaoId(o);
+            inspecoes.save(bugiganga);
 
-            Inspecao inspes = new Inspecao();
-            inspes.setObraInspecaoId(insp);
-            inspes.setData(LocalDate.now());
+            ObraLocalizacao p = new ObraLocalizacao();
+            p.setObraId(voz);
+            obraLocalizacoes.save(p);
 
-            inspecoes.save(inspes);
-
-            //forma com construtor
-            obras.save(new Obra("Reforma da Reforma no teste", 102, "1", "2", "3", "4", "5"));
-
-            obrasInpescoes.findObraInspecaoFetchInspecoes(Reforma.getId());
-            System.out.println(Reforma);
-            System.out.println(insp.getInspecoes());
         };
     }
 

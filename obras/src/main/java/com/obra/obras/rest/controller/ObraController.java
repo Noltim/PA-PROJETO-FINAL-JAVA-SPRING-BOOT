@@ -1,0 +1,39 @@
+package com.obra.obras.rest.controller;
+
+import com.obra.obras.domain.entity.Obra;
+import com.obra.obras.domain.repository.Obras;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@Controller
+public class ObraController {
+
+    private Obras obras;
+
+    public ObraController(Obras obras) {
+        this.obras = obras;
+    }
+
+    @GetMapping(value = "/api/obras/{id}")
+    @ResponseBody
+    public ResponseEntity getObraById(@PathVariable Integer id) {
+        Optional<Obra> obra = obras.findById(id);
+        if(obra.isPresent()){
+            return ResponseEntity.ok(obra.get());
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping(value = "/api/obras")
+    @ResponseBody
+    public ResponseEntity<List<Obra>> getAll() {
+       return new ResponseEntity<>(obras.findAll(), HttpStatus.OK);
+    }
+
+}
