@@ -1,5 +1,6 @@
 package com.obra.obras.rest.controller;
 
+import com.obra.obras.domain.entity.ObraInspecao;
 import com.obra.obras.domain.entity.ObraLocalizacao;
 import com.obra.obras.domain.repository.ObraLocalizacoes;
 import org.springframework.http.HttpStatus;
@@ -35,5 +36,12 @@ public class ObraLocalizacaoController {
     @ResponseBody
     public ResponseEntity<List<ObraLocalizacao>> getAll() {
        return new ResponseEntity<>(obraLocalizacoes.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping("/api/obralocal")
+    @ResponseBody
+    public ResponseEntity save(@RequestBody ObraLocalizacao obraLocalizacao){
+        ObraLocalizacao obraLocalizacaoSalva = obraLocalizacoes.save(obraLocalizacao);
+        return ResponseEntity.ok(obraLocalizacaoSalva);
     }
 }

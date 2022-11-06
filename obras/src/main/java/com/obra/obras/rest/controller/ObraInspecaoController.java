@@ -1,5 +1,6 @@
 package com.obra.obras.rest.controller;
 
+import com.obra.obras.domain.entity.Obra;
 import com.obra.obras.domain.entity.ObraInspecao;
 import com.obra.obras.domain.repository.ObraInspecoes;
 import org.springframework.http.HttpStatus;
@@ -35,5 +36,12 @@ public class ObraInspecaoController {
     @ResponseBody
     public ResponseEntity<List<ObraInspecao>> getAll() {
        return new ResponseEntity<>(obraInspecoes.findAll(), HttpStatus.OK);
+    }
+
+    @PostMapping("/api/obrainspecoes")
+    @ResponseBody
+    public ResponseEntity save(@RequestBody ObraInspecao obraInspecao){
+        ObraInspecao obraInspecaoSalva = obraInspecoes.save(obraInspecao);
+        return ResponseEntity.ok(obraInspecaoSalva);
     }
 }
