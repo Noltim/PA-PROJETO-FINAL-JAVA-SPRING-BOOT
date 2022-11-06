@@ -1,13 +1,12 @@
 package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.Inspecao;
+import com.obra.obras.domain.entity.Obra;
 import com.obra.obras.domain.repository.Inspecoes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +35,13 @@ public class InspecaoController {
     @ResponseBody
     public ResponseEntity<List<Inspecao>> getAll() {
         return new ResponseEntity<>(inspecoes.findAll() , HttpStatus.OK);
+    }
+
+    @PostMapping("/api/inspecoes")
+    @ResponseBody
+    public ResponseEntity save(@RequestBody Inspecao inspecao){
+        Inspecao inspecaoSalva = inspecoes.save(inspecao);
+        return ResponseEntity.ok(inspecaoSalva);
     }
 
 }
