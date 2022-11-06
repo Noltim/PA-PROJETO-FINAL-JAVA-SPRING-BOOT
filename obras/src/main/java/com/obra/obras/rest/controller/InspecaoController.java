@@ -43,4 +43,8 @@ public class InspecaoController {
         Inspecao inspecaoSalva = inspecoes.save(inspecao);
         return ResponseEntity.ok(inspecaoSalva);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 00316b40ca85e8794222112fb226bd24a0ae07be
 }
