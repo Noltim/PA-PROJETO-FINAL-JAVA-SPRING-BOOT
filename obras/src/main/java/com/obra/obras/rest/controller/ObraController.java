@@ -36,4 +36,11 @@ public class ObraController {
        return new ResponseEntity<>(obras.findAll(), HttpStatus.OK);
     }
 
+    @PostMapping("/api/obras")
+    @ResponseBody
+    public ResponseEntity save(@RequestBody Obra obra){
+       Obra obraSalva = obras.save(obra);
+       return ResponseEntity.ok(obraSalva);
+    }
+
 }
