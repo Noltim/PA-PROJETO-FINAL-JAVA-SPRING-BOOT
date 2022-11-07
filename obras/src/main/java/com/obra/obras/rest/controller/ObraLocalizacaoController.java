@@ -1,5 +1,6 @@
 package com.obra.obras.rest.controller;
 
+import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
 import com.obra.obras.domain.entity.ObraInspecao;
 import com.obra.obras.domain.entity.ObraLocalizacao;
 import com.obra.obras.domain.repository.ObraLocalizacoes;
@@ -43,5 +44,17 @@ public class ObraLocalizacaoController {
     public ResponseEntity save(@RequestBody ObraLocalizacao obraLocalizacao){
         ObraLocalizacao obraLocalizacaoSalva = obraLocalizacoes.save(obraLocalizacao);
         return ResponseEntity.ok(obraLocalizacaoSalva);
+    }
+
+    @DeleteMapping("/api/detalhesobra/{id}")
+    @ResponseBody
+    public ResponseEntity delete(@PathVariable Integer id){
+        Optional<ObraLocalizacao> detalhesTecnicos = obraLocalizacoes.findById(id);
+        if(detalhesTecnicos.isPresent()){
+            obraLocalizacoes.delete(detalhesTecnicos.get());
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
     }
 }

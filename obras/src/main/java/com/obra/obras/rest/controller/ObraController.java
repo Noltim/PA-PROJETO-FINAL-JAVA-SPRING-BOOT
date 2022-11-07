@@ -1,6 +1,7 @@
 package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.Obra;
+import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
 import com.obra.obras.domain.repository.Obras;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,7 +54,6 @@ public class ObraController {
         }
         return ResponseEntity.notFound().build();
     }
-
 
 }
 

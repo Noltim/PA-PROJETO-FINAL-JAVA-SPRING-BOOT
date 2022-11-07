@@ -1,5 +1,6 @@
 package com.obra.obras.rest.controller;
 
+import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
 import com.obra.obras.domain.entity.ObraInspecao;
 import com.obra.obras.domain.repository.ObraInspecoes;
 import org.springframework.http.HttpStatus;
@@ -43,4 +44,17 @@ public class ObraInspecaoController {
         ObraInspecao obraInspecaoSalva = obraInspecoes.save(obraInspecao);
         return ResponseEntity.ok(obraInspecaoSalva);
     }
+
+    @DeleteMapping("/api/obrainspecoes/{id}")
+    @ResponseBody
+    public ResponseEntity delete(@PathVariable Integer id){
+        Optional<ObraInspecao> obraInspecao = obraInspecoes.findById(id);
+        if(obraInspecao.isPresent()){
+            obraInspecoes.delete(obraInspecao.get());
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
 }
