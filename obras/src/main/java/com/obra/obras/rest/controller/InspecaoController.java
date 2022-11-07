@@ -4,13 +4,13 @@ import com.obra.obras.domain.entity.Inspecao;
 import com.obra.obras.domain.repository.Inspecoes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
+@RequestMapping("/api/inspecoes")
 public class InspecaoController {
 
     private Inspecoes inspecoes;
@@ -19,8 +19,7 @@ public class InspecaoController {
         this.inspecoes = inspecoes;
     }
 
-    @GetMapping(value = "/api/inspecoes/{id}")
-    @ResponseBody
+    @GetMapping(value = "{id}")
     public ResponseEntity getInspecoesById(@PathVariable Integer id) {
         Optional<Inspecao> inspecao = inspecoes.findById(id);
         if(inspecao.isPresent()){
@@ -30,21 +29,18 @@ public class InspecaoController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping(value = "/api/inspecoes")
-    @ResponseBody
+    @GetMapping
     public ResponseEntity<List<Inspecao>> getAll() {
         return new ResponseEntity<>(inspecoes.findAll() , HttpStatus.OK);
     }
 
-    @PostMapping("/api/inspecoes")
-    @ResponseBody
+    @PostMapping
     public ResponseEntity save(@RequestBody Inspecao inspecao){
         Inspecao inspecaoSalva = inspecoes.save(inspecao);
         return ResponseEntity.ok(inspecaoSalva);
     }
 
-    @DeleteMapping("/api/inspecoes/{id}")
-    @ResponseBody
+    @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable Integer id){
         Optional<Inspecao> inspecao = inspecoes.findById(id);
         if(inspecao.isPresent()){

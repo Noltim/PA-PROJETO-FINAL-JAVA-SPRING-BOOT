@@ -4,13 +4,13 @@ import com.obra.obras.domain.entity.ObraLocalizacao;
 import com.obra.obras.domain.repository.ObraLocalizacoes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
+@RequestMapping("/api/obralocal")
 public class ObraLocalizacaoController {
 
     private ObraLocalizacoes obraLocalizacoes;
@@ -20,8 +20,7 @@ public class ObraLocalizacaoController {
     }
 
 
-    @GetMapping(value = "/api/obralocal/{id}")
-    @ResponseBody
+    @GetMapping(value = "{id}")
     public ResponseEntity getObraLocalById(@PathVariable Integer id) {
         Optional<ObraLocalizacao> obraLocal = obraLocalizacoes.findById(id);
         if(obraLocal.isPresent()){
@@ -31,21 +30,18 @@ public class ObraLocalizacaoController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping(value = "/api/obralocal")
-    @ResponseBody
+    @GetMapping
     public ResponseEntity<List<ObraLocalizacao>> getAll() {
        return new ResponseEntity<>(obraLocalizacoes.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/api/obralocal")
-    @ResponseBody
+    @PostMapping
     public ResponseEntity save(@RequestBody ObraLocalizacao obraLocalizacao){
         ObraLocalizacao obraLocalizacaoSalva = obraLocalizacoes.save(obraLocalizacao);
         return ResponseEntity.ok(obraLocalizacaoSalva);
     }
 
-    @DeleteMapping("/api/obralocal/{id}")
-    @ResponseBody
+    @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable Integer id){
         Optional<ObraLocalizacao> detalhesTecnicos = obraLocalizacoes.findById(id);
         if(detalhesTecnicos.isPresent()){

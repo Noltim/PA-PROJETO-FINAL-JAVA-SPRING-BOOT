@@ -4,13 +4,13 @@ import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
 import com.obra.obras.domain.repository.ObraDetalhesTecnicosRep;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
+@RequestMapping("/api/detalhesobra")
 public class ObraDetalhesTecnicosController {
 
     private ObraDetalhesTecnicosRep obraDetalhesTecnicosRep;
@@ -19,8 +19,7 @@ public class ObraDetalhesTecnicosController {
         this.obraDetalhesTecnicosRep = obraDetalhesTecnicosRep;
     }
 
-    @GetMapping(value = "/api/detalhesobra/{id}")
-    @ResponseBody
+    @GetMapping(value = "{id}")
     public ResponseEntity getDetalhesObraById(@PathVariable Integer id) {
         Optional<ObraDetalhesTecnicos> detalhesTecnicos = obraDetalhesTecnicosRep.findById(id);
         if(detalhesTecnicos.isPresent()){
@@ -30,21 +29,18 @@ public class ObraDetalhesTecnicosController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping(value = "/api/detalhesobra")
-    @ResponseBody
+    @GetMapping
     public ResponseEntity<List<ObraDetalhesTecnicos>> getAll() {
         return new ResponseEntity<>(obraDetalhesTecnicosRep.findAll() , HttpStatus.OK);
     }
 
-    @PostMapping("/api/detalhesobra")
-    @ResponseBody
+    @PostMapping
     public ResponseEntity save(@RequestBody ObraDetalhesTecnicos obraDetalhesTecnicos){
         ObraDetalhesTecnicos obraDetalhesTecnicosSalva = obraDetalhesTecnicosRep.save(obraDetalhesTecnicos);
         return ResponseEntity.ok(obraDetalhesTecnicosSalva);
     }
 
-    @DeleteMapping("/api/detalhesobra/{id}")
-    @ResponseBody
+    @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable Integer id){
         Optional<ObraDetalhesTecnicos> detalhesTecnicos = obraDetalhesTecnicosRep.findById(id);
         if(detalhesTecnicos.isPresent()){
