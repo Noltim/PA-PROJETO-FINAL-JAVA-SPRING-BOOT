@@ -56,22 +56,16 @@ public class ObraController {
 
     @PutMapping("/api/obras/{id}")
     @ResponseBody
-    public ResponseBody update(@PathVariable Integer id,
-                               @RequestBody Obra obra){
-        return (ResponseBody) obras
+    public ResponseEntity update(@PathVariable Integer id,
+                                 @RequestBody Obra obra) {
+        return obras
                 .findById(id)
                 .map(obraExistente -> {
                     obra.setId(obraExistente.getId());
-                    obra.setNome(obraExistente.getNome());
-                    obra.setAnoConstrucao(obraExistente.getAnoConstrucao());
-                    obra.setCoordenacao(obraExistente.getCoordenacao());
-                    obra.setGerencia(obraExistente.getGerencia());
-                    obra.setDiretoria(obraExistente.getDiretoria());
-                    obra.setOutorga(obraExistente.getOutorga());
-                    obra.setTitularidade(obraExistente.getTitularidade());
+
                     obras.save(obra);
                     return ResponseEntity.noContent().build();
-                }).orElseGet( () -> ResponseEntity.notFound().build() );
+                }).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }
 
