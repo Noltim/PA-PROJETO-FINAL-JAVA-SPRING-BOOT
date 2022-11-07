@@ -43,4 +43,17 @@ public class ObraInspecaoController {
         ObraInspecao obraInspecaoSalva = obraInspecoes.save(obraInspecao);
         return ResponseEntity.ok(obraInspecaoSalva);
     }
+
+    @DeleteMapping("/api/obrainspecoes/{id}")
+    @ResponseBody
+    public ResponseEntity delete(@PathVariable Integer id){
+        Optional<ObraInspecao> obraInspecao = obraInspecoes.findById(id);
+        if(obraInspecao.isPresent()){
+            obraInspecoes.delete(obraInspecao.get());
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
 }

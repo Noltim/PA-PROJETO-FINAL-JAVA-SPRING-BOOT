@@ -42,4 +42,16 @@ public class InspecaoController {
         Inspecao inspecaoSalva = inspecoes.save(inspecao);
         return ResponseEntity.ok(inspecaoSalva);
     }
+
+    @DeleteMapping("/api/inspecoes/{id}")
+    @ResponseBody
+    public ResponseEntity delete(@PathVariable Integer id){
+        Optional<Inspecao> inspecao = inspecoes.findById(id);
+        if(inspecao.isPresent()){
+            inspecoes.delete(inspecao.get());
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 }

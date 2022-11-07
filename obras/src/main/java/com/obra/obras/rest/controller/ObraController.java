@@ -72,10 +72,7 @@ public class ObraController {
                     obras.save(obra);
                     return ResponseEntity.noContent().build();
                 }).orElseGet( () -> ResponseEntity.notFound().build() );
-
     }
-
-
 }
 
 
