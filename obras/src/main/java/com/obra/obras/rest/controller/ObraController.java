@@ -23,7 +23,7 @@ public class ObraController {
     @ResponseBody
     public ResponseEntity getObraById(@PathVariable Integer id) {
         Optional<Obra> obra = obras.findById(id);
-        if(obra.isPresent()){
+        if (obra.isPresent()) {
             return ResponseEntity.ok(obra.get());
         }
 
@@ -33,14 +33,30 @@ public class ObraController {
     @GetMapping(value = "/api/obras")
     @ResponseBody
     public ResponseEntity<List<Obra>> getAll() {
-       return new ResponseEntity<>(obras.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(obras.findAll(), HttpStatus.OK);
     }
 
     @PostMapping("/api/obras")
     @ResponseBody
-    public ResponseEntity save(@RequestBody Obra obra){
-       Obra obraSalva = obras.save(obra);
-       return ResponseEntity.ok(obraSalva);
+    public ResponseEntity save(@RequestBody Obra obra) {
+        Obra obraSalva = obras.save(obra);
+        return ResponseEntity.ok(obraSalva);
     }
 
+    @DeleteMapping("/api/obras/{id}")
+    @ResponseBody
+    public ResponseEntity delete(@PathVariable Integer id) {
+        Optional<Obra> obra = obras.findById(id);
+        if (obra.isPresent()) {
+            obras.delete(obra.get());
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+
 }
+
+
+
+

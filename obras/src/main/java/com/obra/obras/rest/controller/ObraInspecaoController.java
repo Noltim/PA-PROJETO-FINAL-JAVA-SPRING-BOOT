@@ -1,6 +1,5 @@
 package com.obra.obras.rest.controller;
 
-import com.obra.obras.domain.entity.Obra;
 import com.obra.obras.domain.entity.ObraInspecao;
 import com.obra.obras.domain.repository.ObraInspecoes;
 import org.springframework.http.HttpStatus;

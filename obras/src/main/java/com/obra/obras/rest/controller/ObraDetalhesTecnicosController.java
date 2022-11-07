@@ -1,13 +1,11 @@
 package com.obra.obras.rest.controller;
 
-import com.obra.obras.domain.entity.Obra;
 import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
 import com.obra.obras.domain.repository.ObraDetalhesTecnicosRep;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 import java.util.Optional;
@@ -44,4 +42,17 @@ public class ObraDetalhesTecnicosController {
         ObraDetalhesTecnicos obraDetalhesTecnicosSalva = obraDetalhesTecnicosRep.save(obraDetalhesTecnicos);
         return ResponseEntity.ok(obraDetalhesTecnicosSalva);
     }
+
+    @DeleteMapping("/api/detalhesobra/{id}")
+    @ResponseBody
+    public ResponseEntity delete(@PathVariable Integer id){
+        Optional<ObraDetalhesTecnicos> detalhesTecnicos = obraDetalhesTecnicosRep.findById(id);
+        if(detalhesTecnicos.isPresent()){
+            obraDetalhesTecnicosRep.delete(detalhesTecnicos.get());
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
 }

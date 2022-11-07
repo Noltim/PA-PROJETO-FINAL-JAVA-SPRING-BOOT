@@ -1,6 +1,8 @@
 package com.obra.obras.domain.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -18,6 +20,7 @@ public class ObraInspecao {
     private String status;
     private int prioridade;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "obraInspecaoId", fetch = FetchType.LAZY)
     private Set<Inspecao> inspecoes;
 

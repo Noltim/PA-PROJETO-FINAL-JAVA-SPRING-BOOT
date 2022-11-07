@@ -1,7 +1,6 @@
 package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.Inspecao;
-import com.obra.obras.domain.entity.Obra;
 import com.obra.obras.domain.repository.Inspecoes;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,8 +42,4 @@ public class InspecaoController {
         Inspecao inspecaoSalva = inspecoes.save(inspecao);
         return ResponseEntity.ok(inspecaoSalva);
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 00316b40ca85e8794222112fb226bd24a0ae07be
 }
