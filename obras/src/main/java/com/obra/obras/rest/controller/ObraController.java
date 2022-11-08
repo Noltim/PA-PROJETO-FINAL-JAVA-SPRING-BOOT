@@ -38,8 +38,6 @@ public class ObraController {
                                 "Obra não encontrada"));
     }
 
-    //trocar de todos o metodo de get geral por esse a baixo
-    // e criar o mesmo metodo nos outros controlles
     @GetMapping
     public List<Obra> find(Obra filtro) {
         ExampleMatcher encontrar = ExampleMatcher
@@ -51,7 +49,6 @@ public class ObraController {
         return obraRepository.findAll(exemplo);
 
     }
-
 
     @PostMapping
     @ResponseStatus(CREATED)
@@ -72,7 +69,6 @@ public class ObraController {
     }
 
 
-    //criar o mesmo metodo nos outros controlles
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void update(@PathVariable Integer id,
