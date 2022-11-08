@@ -2,6 +2,7 @@ package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.Obra;
 import com.obra.obras.domain.repository.ObraRepository;
+import com.obra.obras.service.ObraService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
@@ -19,12 +20,18 @@ public class ObraController {
 
     private ObraRepository obraRepository;
 
-    public ObraController(ObraRepository obraRepository) {
+    private ObraService obraService;
+
+    public ObraController(ObraRepository obraRepository, ObraService obraService) {
         this.obraRepository = obraRepository;
+        this.obraService = obraService;
     }
 
+
+
+
     @GetMapping(value = "{id}")
-    @ResponseStatus(OK)
+    @ResponseStatus(NO_CONTENT)
     public Obra getObraById(@PathVariable Integer id) {
         return obraRepository
                 .findById(id)

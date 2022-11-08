@@ -1,4 +1,7 @@
 package com.obra.obras.service;
 
-public class ObraDetalhesTecnicosService {
+import org.springframework.stereotype.Service;
+
+@Service
+public interface ObraDetalhesTecnicosService {
 }

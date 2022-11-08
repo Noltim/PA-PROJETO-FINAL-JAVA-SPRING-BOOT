@@ -1,4 +1,7 @@
 package com.obra.obras.service;
 
-public class InspecaoService {
+import org.springframework.stereotype.Service;
+
+@Service
+public interface InspecaoService {
 }
