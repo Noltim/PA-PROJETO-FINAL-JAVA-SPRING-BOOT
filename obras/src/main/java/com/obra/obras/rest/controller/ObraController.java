@@ -28,10 +28,8 @@ public class ObraController {
     }
 
 
-
-
     @GetMapping(value = "{id}")
-    @ResponseStatus(NO_CONTENT)
+    @ResponseStatus(OK)
     public Obra getObraById(@PathVariable Integer id) {
         return obraRepository
                 .findById(id)
