@@ -8,7 +8,7 @@ import java.util.List;
 
 //vai fazer operações na DB
 
-public interface Obras extends JpaRepository<Obra, Integer> {
+public interface ObraRepository extends JpaRepository<Obra, Integer> {
 
     List<Obra> findByNomeLike(String nome);
 

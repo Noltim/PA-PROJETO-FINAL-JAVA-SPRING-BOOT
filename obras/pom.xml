@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.obra</groupId>
-	<artifactId>obras</artifactId>
+	<artifactId>obraRepository</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>obras</name>
+	<name>obraRepository</name>
 	<description>Obra project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

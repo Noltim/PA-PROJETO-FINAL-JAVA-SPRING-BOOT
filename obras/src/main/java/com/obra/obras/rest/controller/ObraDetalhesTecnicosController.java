@@ -1,7 +1,7 @@
 package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
-import com.obra.obras.domain.repository.ObraDetalhesTecnicosRep;
+import com.obra.obras.domain.repository.ObraDetalhesTecnicosRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +13,15 @@ import java.util.Optional;
 @RequestMapping("/api/detalhesobra")
 public class ObraDetalhesTecnicosController {
 
-    private ObraDetalhesTecnicosRep obraDetalhesTecnicosRep;
+    private ObraDetalhesTecnicosRepository obraDetalhesTecnicosRepository;
 
-    public ObraDetalhesTecnicosController(ObraDetalhesTecnicosRep obraDetalhesTecnicosRep) {
-        this.obraDetalhesTecnicosRep = obraDetalhesTecnicosRep;
+    public ObraDetalhesTecnicosController(ObraDetalhesTecnicosRepository obraDetalhesTecnicosRepository) {
+        this.obraDetalhesTecnicosRepository = obraDetalhesTecnicosRepository;
     }
 
     @GetMapping(value = "{id}")
     public ResponseEntity getDetalhesObraById(@PathVariable Integer id) {
-        Optional<ObraDetalhesTecnicos> detalhesTecnicos = obraDetalhesTecnicosRep.findById(id);
+        Optional<ObraDetalhesTecnicos> detalhesTecnicos = obraDetalhesTecnicosRepository.findById(id);
         if(detalhesTecnicos.isPresent()){
             return ResponseEntity.ok(detalhesTecnicos.get());
         }
@@ -31,20 +31,20 @@ public class ObraDetalhesTecnicosController {
 
     @GetMapping
     public ResponseEntity<List<ObraDetalhesTecnicos>> getAll() {
-        return new ResponseEntity<>(obraDetalhesTecnicosRep.findAll() , HttpStatus.OK);
+        return new ResponseEntity<>(obraDetalhesTecnicosRepository.findAll() , HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity save(@RequestBody ObraDetalhesTecnicos obraDetalhesTecnicos){
-        ObraDetalhesTecnicos obraDetalhesTecnicosSalva = obraDetalhesTecnicosRep.save(obraDetalhesTecnicos);
+        ObraDetalhesTecnicos obraDetalhesTecnicosSalva = obraDetalhesTecnicosRepository.save(obraDetalhesTecnicos);
         return ResponseEntity.ok(obraDetalhesTecnicosSalva);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable Integer id){
-        Optional<ObraDetalhesTecnicos> detalhesTecnicos = obraDetalhesTecnicosRep.findById(id);
+        Optional<ObraDetalhesTecnicos> detalhesTecnicos = obraDetalhesTecnicosRepository.findById(id);
         if(detalhesTecnicos.isPresent()){
-            obraDetalhesTecnicosRep.delete(detalhesTecnicos.get());
+            obraDetalhesTecnicosRepository.delete(detalhesTecnicos.get());
             return ResponseEntity.noContent().build();
         }
 

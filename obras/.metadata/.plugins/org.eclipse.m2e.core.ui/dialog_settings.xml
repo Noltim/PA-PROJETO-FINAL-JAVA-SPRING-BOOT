@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
-			<item value="C:\Users\SPARTA\Desktop\Facu\obras"/>
+			<item value="C:\Users\SPARTA\Desktop\Facu\obraRepository"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

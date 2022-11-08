@@ -1,12 +1,15 @@
 package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.Obra;
-import com.obra.obras.domain.repository.Obras;
+import com.obra.obras.domain.repository.ObraRepository;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+
+import static org.springframework.http.HttpStatus.*;
 
 import java.util.List;
 
@@ -14,15 +17,16 @@ import java.util.List;
 @RequestMapping("/api/obras")
 public class ObraController {
 
-    private Obras obras;
+    private ObraRepository obraRepository;
 
-    public ObraController(Obras obras) {
-        this.obras = obras;
+    public ObraController(ObraRepository obraRepository) {
+        this.obraRepository = obraRepository;
     }
 
     @GetMapping(value = "{id}")
+    @ResponseStatus(OK)
     public Obra getObraById(@PathVariable Integer id) {
-        return obras
+        return obraRepository
                 .findById(id)
                 .orElseThrow(() ->
                         new ResponseStatusException(HttpStatus.NOT_FOUND,
@@ -39,24 +43,24 @@ public class ObraController {
                 .withStringMatcher(
                         ExampleMatcher.StringMatcher.CONTAINING);
         Example exemplo = Example.of(filtro, encontrar);
-        return obras.findAll(exemplo);
+        return obraRepository.findAll(exemplo);
 
     }
 
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(CREATED)
     public Obra save(@RequestBody Obra obra) {
-        return obras.save(obra);
+        return obraRepository.save(obra);
     }
 
     @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(NO_CONTENT)
     public void delete(@PathVariable Integer id) {
-        obras.findById(id)
+        obraRepository.findById(id)
                 .map(obra -> {
-                    obras.delete(obra);
-                    return obra;
+                    obraRepository.delete(obra);
+                    return Void.TYPE;
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Obra não encontrada"));
@@ -65,15 +69,15 @@ public class ObraController {
 
     //criar o mesmo metodo nos outros controlles
     @PutMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(NO_CONTENT)
     public void update(@PathVariable Integer id,
                        @RequestBody Obra obra) {
-        obras
+        obraRepository
                 .findById(id)
                 .map(obraExistente -> {
                     obra.setId(obraExistente.getId());
 
-                    obras.save(obra);
+                    obraRepository.save(obra);
                     return obraExistente;
                 }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Obra não encontrada"));

@@ -1,7 +1,7 @@
 package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.Inspecao;
-import com.obra.obras.domain.repository.Inspecoes;
+import com.obra.obras.domain.repository.InspecaoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,15 +13,15 @@ import java.util.Optional;
 @RequestMapping("/api/inspecoes")
 public class InspecaoController {
 
-    private Inspecoes inspecoes;
+    private InspecaoRepository inspecaoRepository;
 
-    public InspecaoController(Inspecoes inspecoes){
-        this.inspecoes = inspecoes;
+    public InspecaoController(InspecaoRepository inspecaoRepository){
+        this.inspecaoRepository = inspecaoRepository;
     }
 
     @GetMapping(value = "{id}")
     public ResponseEntity getInspecoesById(@PathVariable Integer id) {
-        Optional<Inspecao> inspecao = inspecoes.findById(id);
+        Optional<Inspecao> inspecao = inspecaoRepository.findById(id);
         if(inspecao.isPresent()){
             return ResponseEntity.ok(inspecao.get());
         }
@@ -31,20 +31,20 @@ public class InspecaoController {
 
     @GetMapping
     public ResponseEntity<List<Inspecao>> getAll() {
-        return new ResponseEntity<>(inspecoes.findAll() , HttpStatus.OK);
+        return new ResponseEntity<>(inspecaoRepository.findAll() , HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity save(@RequestBody Inspecao inspecao){
-        Inspecao inspecaoSalva = inspecoes.save(inspecao);
+        Inspecao inspecaoSalva = inspecaoRepository.save(inspecao);
         return ResponseEntity.ok(inspecaoSalva);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable Integer id){
-        Optional<Inspecao> inspecao = inspecoes.findById(id);
+        Optional<Inspecao> inspecao = inspecaoRepository.findById(id);
         if(inspecao.isPresent()){
-            inspecoes.delete(inspecao.get());
+            inspecaoRepository.delete(inspecao.get());
             return ResponseEntity.noContent().build();
         }
 

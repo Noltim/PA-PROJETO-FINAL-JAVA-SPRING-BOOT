@@ -17,31 +17,31 @@ public class ObrasApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(
-            @Autowired Obras obras,
-            @Autowired Inspecoes inspecoes,
-            @Autowired ObraDetalhesTecnicosRep obraDetalhesTecnicosRep,
-            @Autowired ObraInspecoes obraInspecoes,
-            @Autowired ObraLocalizacoes obraLocalizacoes
+            @Autowired ObraRepository obraRepository,
+            @Autowired InspecaoRepository inspecaoRepository,
+            @Autowired ObraDetalhesTecnicosRepository obraDetalhesTecnicosRepository,
+            @Autowired ObraInspecaoRepository obraInspecaoRepository,
+            @Autowired ObraLocalizacaoRepository obraLocalizacaoRepository
     ) {
         return args -> {
             Obra voz = new Obra(null, "Voz de Veludo");
-            obras.save(voz);
+            obraRepository.save(voz);
 
             ObraDetalhesTecnicos det = new ObraDetalhesTecnicos();
             det.setObraId(voz);
-            obraDetalhesTecnicosRep.save(det);
+            obraDetalhesTecnicosRepository.save(det);
 
             ObraInspecao o = new ObraInspecao();
             o.setObraId(voz);
-            obraInspecoes.save(o);
+            obraInspecaoRepository.save(o);
 
             Inspecao bugiganga = new Inspecao(null, null, LocalDate.now(), null);
             bugiganga.setObraInspecaoId(o);
-            inspecoes.save(bugiganga);
+            inspecaoRepository.save(bugiganga);
 
             ObraLocalizacao p = new ObraLocalizacao();
             p.setObraId(voz);
-            obraLocalizacoes.save(p);
+            obraLocalizacaoRepository.save(p);
 
         };
     }

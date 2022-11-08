@@ -1,7 +1,7 @@
 package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.ObraLocalizacao;
-import com.obra.obras.domain.repository.ObraLocalizacoes;
+import com.obra.obras.domain.repository.ObraLocalizacaoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,16 +13,16 @@ import java.util.Optional;
 @RequestMapping("/api/obralocal")
 public class ObraLocalizacaoController {
 
-    private ObraLocalizacoes obraLocalizacoes;
+    private ObraLocalizacaoRepository obraLocalizacaoRepository;
 
-    public ObraLocalizacaoController(ObraLocalizacoes obraLocalizacoes) {
-        this.obraLocalizacoes = obraLocalizacoes;
+    public ObraLocalizacaoController(ObraLocalizacaoRepository obraLocalizacaoRepository) {
+        this.obraLocalizacaoRepository = obraLocalizacaoRepository;
     }
 
 
     @GetMapping(value = "{id}")
     public ResponseEntity getObraLocalById(@PathVariable Integer id) {
-        Optional<ObraLocalizacao> obraLocal = obraLocalizacoes.findById(id);
+        Optional<ObraLocalizacao> obraLocal = obraLocalizacaoRepository.findById(id);
         if(obraLocal.isPresent()){
             return ResponseEntity.ok(obraLocal.get());
         }
@@ -32,20 +32,20 @@ public class ObraLocalizacaoController {
 
     @GetMapping
     public ResponseEntity<List<ObraLocalizacao>> getAll() {
-       return new ResponseEntity<>(obraLocalizacoes.findAll(), HttpStatus.OK);
+       return new ResponseEntity<>(obraLocalizacaoRepository.findAll(), HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity save(@RequestBody ObraLocalizacao obraLocalizacao){
-        ObraLocalizacao obraLocalizacaoSalva = obraLocalizacoes.save(obraLocalizacao);
+        ObraLocalizacao obraLocalizacaoSalva = obraLocalizacaoRepository.save(obraLocalizacao);
         return ResponseEntity.ok(obraLocalizacaoSalva);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity delete(@PathVariable Integer id){
-        Optional<ObraLocalizacao> detalhesTecnicos = obraLocalizacoes.findById(id);
+        Optional<ObraLocalizacao> detalhesTecnicos = obraLocalizacaoRepository.findById(id);
         if(detalhesTecnicos.isPresent()){
-            obraLocalizacoes.delete(detalhesTecnicos.get());
+            obraLocalizacaoRepository.delete(detalhesTecnicos.get());
             return ResponseEntity.noContent().build();
         }
 
