@@ -2,20 +2,15 @@ package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.Inspecao;
 import com.obra.obras.domain.repository.InspecaoRepository;
-import com.obra.obras.domain.repository.ObraRepository;
-
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import static org.springframework.http.HttpStatus.*;
-
 import java.util.List;
-import java.util.Optional;
+
+import static org.springframework.http.HttpStatus.*;
 
 @RestController
 @RequestMapping("/api/inspecoes")
@@ -66,7 +61,7 @@ public class InspecaoController {
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void update(@PathVariable Integer id,
-            @RequestBody Inspecao inspecao) {
+                       @RequestBody Inspecao inspecao) {
         inspecaoRepository
                 .findById(id)
                 .map(inspecaoExistente -> {
