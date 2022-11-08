@@ -2,9 +2,16 @@ package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
 import com.obra.obras.domain.repository.ObraDetalhesTecnicosRepository;
+import com.obra.obras.domain.repository.ObraRepository;
+
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import static org.springframework.http.HttpStatus.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,35 +27,54 @@ public class ObraDetalhesTecnicosController {
     }
 
     @GetMapping(value = "{id}")
-    public ResponseEntity getDetalhesObraById(@PathVariable Integer id) {
-        Optional<ObraDetalhesTecnicos> detalhesTecnicos = obraDetalhesTecnicosRepository.findById(id);
-        if(detalhesTecnicos.isPresent()){
-            return ResponseEntity.ok(detalhesTecnicos.get());
-        }
-
-        return ResponseEntity.notFound().build();
+    @ResponseStatus(OK)
+    public ObraDetalhesTecnicos getDetalhesObraById(@PathVariable Integer id) {
+        return obraDetalhesTecnicosRepository
+                .findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                        "Detalhes tecnicos da obra não encontrados"));
     }
 
     @GetMapping
-    public ResponseEntity<List<ObraDetalhesTecnicos>> getAll() {
-        return new ResponseEntity<>(obraDetalhesTecnicosRepository.findAll() , HttpStatus.OK);
+    public List<ObraDetalhesTecnicos> find(ObraDetalhesTecnicos filtro) {
+        ExampleMatcher encontrar = ExampleMatcher
+        .matching()
+        .withIgnoreCase()
+        .withStringMatcher(
+            ExampleMatcher.StringMatcher.CONTAINING);
+        Example exemplo = Example.of(filtro, encontrar);
+        return obraDetalhesTecnicosRepository.findAll(exemplo);
     }
 
     @PostMapping
-    public ResponseEntity save(@RequestBody ObraDetalhesTecnicos obraDetalhesTecnicos){
-        ObraDetalhesTecnicos obraDetalhesTecnicosSalva = obraDetalhesTecnicosRepository.save(obraDetalhesTecnicos);
-        return ResponseEntity.ok(obraDetalhesTecnicosSalva);
+    @ResponseStatus(CREATED)
+    public ObraDetalhesTecnicos save(@RequestBody ObraDetalhesTecnicos obraDetalhesTecnicos) {
+        return obraDetalhesTecnicosRepository.save(obraDetalhesTecnicos);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity delete(@PathVariable Integer id){
-        Optional<ObraDetalhesTecnicos> detalhesTecnicos = obraDetalhesTecnicosRepository.findById(id);
-        if(detalhesTecnicos.isPresent()){
-            obraDetalhesTecnicosRepository.delete(detalhesTecnicos.get());
-            return ResponseEntity.noContent().build();
-        }
-
-        return ResponseEntity.notFound().build();
+    @ResponseStatus(NO_CONTENT)
+    public void delete(@PathVariable Integer id) {
+        obraDetalhesTecnicosRepository.findById(id)
+        .map(obraDetalhesTecnicos -> {
+            obraDetalhesTecnicosRepository.delete(obraDetalhesTecnicos);
+            return Void.TYPE;
+        })
+        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, 
+        "Detalhes tecnicos da obra não encontrados"));
     }
+
+    @PutMapping("{id}")
+    @ResponseStatus(NO_CONTENT)
+    public void update(@PathVariable Integer id,
+                       @RequestBody ObraDetalhesTecnicos obraDetalhesTecnicos){
+        obraDetalhesTecnicosRepository
+        .findById(id)
+        .map(obraDetalhesTecnicosExistente ->{ 
+        obraDetalhesTecnicos.setId(obraDetalhesTecnicosExistente.getId());
+        return obraDetalhesTecnicosExistente;
+                       }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+                       "Detalhes tecnicos da obra não encontrados"));
+                       }
 
 }
