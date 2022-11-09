@@ -1,2 +1,4 @@
-package com.obra.obras.service.impl;public class ObraLocalizacaoServiceImpl {
+package com.obra.obras.service.impl;
+
+public class ObraLocalizacaoServiceImpl {
 }

@@ -1,8 +1,15 @@
 package com.obra.obras.domain.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ObraLocalizacao {
 
     @Id
@@ -10,70 +17,10 @@ public class ObraLocalizacao {
     private Integer id;
     private String cidade;
     @OneToOne
-    @JoinColumn(name = "obra_id", referencedColumnName="id")
+    @JoinColumn(name = "obra_id", referencedColumnName = "id")
     private Obra obraId;
     private String estado;
     private String latitude;
     private String longitude;
 
-
-    public ObraLocalizacao() {
-    }
-
-    public ObraLocalizacao(Integer id, String cidade, Obra obraId, String estado, String latitude, String longitude) {
-        this.id = id;
-        this.cidade = cidade;
-        this.obraId = obraId;
-        this.estado = estado;
-        this.latitude = latitude;
-        this.longitude = longitude;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
-    public Obra getObraId() {
-        return obraId;
-    }
-
-    public void setObraId(Obra obraId) {
-        this.obraId = obraId;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
 }

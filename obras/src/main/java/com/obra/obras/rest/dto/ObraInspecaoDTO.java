@@ -1,2 +1,4 @@
-package com.obra.obras.rest.dto;public class ObraInspecaoDTO {
+package com.obra.obras.rest.dto;
+
+public class ObraInspecaoDTO {
 }

@@ -24,7 +24,7 @@ public class ObrasApplication {
             @Autowired ObraLocalizacaoRepository obraLocalizacaoRepository
     ) {
         return args -> {
-            Obra voz = new Obra(null, "Voz de Veludo");
+            Obra voz = new Obra(null, "Triplex");
             obraRepository.save(voz);
 
             ObraDetalhesTecnicos det = new ObraDetalhesTecnicos();

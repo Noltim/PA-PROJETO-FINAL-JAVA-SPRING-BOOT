@@ -1,2 +1,4 @@
-package com.obra.obras.service.impl;public class ObraInspecaoServiceImpl {
+package com.obra.obras.service.impl;
+
+public class ObraInspecaoServiceImpl {
 }
