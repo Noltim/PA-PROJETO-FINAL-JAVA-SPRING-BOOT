@@ -12,8 +12,6 @@ import java.math.BigInteger;
 @AllArgsConstructor
 public class ObraDTO {
 
-
-
     @NotEmpty
     @NotNull
     private String nome;

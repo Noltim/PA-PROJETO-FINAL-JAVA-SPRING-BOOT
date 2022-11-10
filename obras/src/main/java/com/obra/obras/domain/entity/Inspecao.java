@@ -24,5 +24,4 @@ public class Inspecao {
     private LocalDate data;
     private String observacoes;
 
-
 }

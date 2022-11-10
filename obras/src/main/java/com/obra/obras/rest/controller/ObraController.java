@@ -29,7 +29,7 @@ public class ObraController {
         this.obraService = obraService;
     }
 
-
+// colocar para retorna um DTO
     @GetMapping(value = "{id}")
     @ResponseStatus(OK)
     public Obra getObraById(@PathVariable Integer id) {
@@ -40,6 +40,7 @@ public class ObraController {
                                 "Obra não encontrada"));
     }
 
+    //passar para o DTO
     @GetMapping
     public List<Obra> find(Obra filtro) {
         ExampleMatcher encontrar = ExampleMatcher
@@ -58,7 +59,7 @@ public class ObraController {
         Obra obra = obraService.salvar(obraDTO);
         return obra;
     }
-
+//colocar para retornar um DTO
     @DeleteMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void delete(@PathVariable Integer id) {
@@ -71,7 +72,7 @@ public class ObraController {
                         "Obra não encontrada"));
     }
 
-
+//retorna um DTO
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void update(@PathVariable Integer id,
