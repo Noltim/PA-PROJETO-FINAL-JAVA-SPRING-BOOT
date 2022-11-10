@@ -1,6 +1,8 @@
 package com.obra.obras.domain.entity;
 
 
+import com.obra.obras.domain.enums.ObraRiscoEnum;
+import com.obra.obras.domain.enums.ObraTipoEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,13 +16,15 @@ import javax.persistence.*;
 public class ObraDetalhesTecnicos {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @OneToOne
     @JoinColumn(name = "obra_id", referencedColumnName = "id")
     private Obra obraId;
-    private String tipo;
-    private String risco;
+    @Enumerated(EnumType.STRING)
+    private ObraTipoEnum tipo;
+    @Enumerated(EnumType.STRING)
+    private ObraRiscoEnum risco;
 
 
 }

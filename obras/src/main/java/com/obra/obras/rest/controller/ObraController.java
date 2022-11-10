@@ -2,10 +2,12 @@ package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.Obra;
 import com.obra.obras.domain.repository.ObraRepository;
+import com.obra.obras.rest.dto.ObraDTO;
 import com.obra.obras.service.ObraService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -52,8 +54,9 @@ public class ObraController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Obra save(@RequestBody Obra obra) {
-        return obraRepository.save(obra);
+    public Obra save ( @RequestBody @Validated ObraDTO obraDTO){
+        Obra obra = obraService.salvar(obraDTO);
+        return obra;
     }
 
     @DeleteMapping("{id}")
@@ -84,6 +87,12 @@ public class ObraController {
                         "Obra não encontrada"));
     }
 }
+
+
+
+
+
+
 
 
 

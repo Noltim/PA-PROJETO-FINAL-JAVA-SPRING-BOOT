@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 
 
 @Entity
@@ -15,10 +16,10 @@ import javax.persistence.*;
 public class Obra {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    private Integer anoConstrucao;
+    private BigInteger anoConstrucao;
     private String coordenacao;
     private String gerencia;
     private String diretoria;

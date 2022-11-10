@@ -6,8 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 
-//vai fazer operações na DB
-
 public interface ObraRepository extends JpaRepository<Obra, Integer> {
 
     List<Obra> findByNomeLike(String nome);
