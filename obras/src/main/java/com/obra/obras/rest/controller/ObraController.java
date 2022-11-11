@@ -51,6 +51,21 @@ public class ObraController {
         return obraRepository.findAll(exemplo);
 
     }
+//
+//    List<Obra> find(Obra filtro){
+//    //fazer um map no service para trazer o dto como o novo cliente pesquisado
+//    //somente o cliente pesquisado no DTO e pasar para o cliente de volta a consulta
+//
+//
+//        ExampleMatcher encontrar = ExampleMatcher
+//                .matching()
+//                .withIgnoreCase()
+//                .withStringMatcher(
+//                        ExampleMatcher.StringMatcher.CONTAINING);
+//        Example exemplo = Example.of(filtro, encontrar);
+//
+//    }
+
 
     @PostMapping
     @ResponseStatus(CREATED)
@@ -58,6 +73,7 @@ public class ObraController {
         Obra obra = obraService.salvar(obraDTO);
         return obra;
     }
+
 //colocar para retornar um DTO
     @DeleteMapping("{id}")
     @ResponseStatus(NO_CONTENT)
