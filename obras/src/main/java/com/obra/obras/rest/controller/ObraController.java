@@ -21,7 +21,6 @@ import java.util.List;
 public class ObraController {
 
     private ObraRepository obraRepository;
-
     private ObraService obraService;
 
     public ObraController(ObraRepository obraRepository, ObraService obraService) {
@@ -87,6 +86,7 @@ public class ObraController {
                 }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Obra não encontrada"));
     }
+
 }
 
 
