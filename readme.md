@@ -104,7 +104,7 @@ Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
 
 
-Você também pode ver a lista de todos os [colaboradores](https://github.com/Noltim/PA-PROJETO-FINAL-JAVA-SPRING-BOOT/graphs/contributors) que participaram deste projeto.
+Você também pode ver a lista de todos os [colaboradores](https://github.com/Noltim/-PA-PROJETO-FINAL-JAVA-SPRING-BOOT/graphs/contributors) que participaram deste projeto.
 
 
 ## 🎁 Expressões de gratidão
