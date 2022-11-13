@@ -4,9 +4,12 @@ import com.obra.obras.domain.entity.Obra;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface ObraRepository extends JpaRepository<Obra, Integer> {
+
+    Optional<Obra> findById (Integer id);
 
     List<Obra> findByNomeLike(String nome);
 
@@ -17,6 +20,7 @@ public interface ObraRepository extends JpaRepository<Obra, Integer> {
     void deleteByNome(String nome);
 
     boolean existsByNome(String nome);
+
 
 
 }

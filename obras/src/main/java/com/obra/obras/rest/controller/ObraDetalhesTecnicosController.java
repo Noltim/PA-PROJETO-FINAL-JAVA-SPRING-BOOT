@@ -22,6 +22,7 @@ public class ObraDetalhesTecnicosController {
         this.obraDetalhesTecnicosRepository = obraDetalhesTecnicosRepository;
     }
 
+
     @GetMapping(value = "{id}")
     @ResponseStatus(OK)
     public ObraDetalhesTecnicos getDetalhesObraById(@PathVariable Integer id) {
