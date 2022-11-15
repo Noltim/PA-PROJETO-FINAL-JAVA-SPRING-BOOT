@@ -3,6 +3,7 @@ package com.obra.obras.domain.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.math.BigInteger;
 
 
@@ -16,6 +17,7 @@ public class Obra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotEmpty(message = "Campo nome é obrigatório")
     private String nome;
     private BigInteger anoConstrucao;
     private String coordenacao;

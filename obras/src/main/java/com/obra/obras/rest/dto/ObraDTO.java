@@ -12,27 +12,31 @@ import java.math.BigInteger;
 @AllArgsConstructor
 public class ObraDTO {
 
-
-   
-    @NotEmpty
-    @NotNull
+    @NotEmpty(message = "Campo nome é obrigatorio.")
+    @NotNull(message = "Campo nome é obrigatorio.")
     private String nome;
-    @NotNull
+
+    @NotNull(message = "Campo Ano Construção não pode ser vazio.")
     private BigInteger anoConstrucao;
-    @NotEmpty
-    @NotNull
+
+    @NotEmpty(message = "Campo coordenação é obrigatorio.")
+    @NotNull(message = "Campo coordenação é obrigatorio.")
     private String coordenacao;
-    @NotEmpty
-    @NotNull
+
+    @NotEmpty(message = "Campo gerencia é obrigatorio.")
+    @NotNull(message = "Campo gerencia é obrigatorio.")
     private String gerencia;
-    @NotEmpty
-    @NotNull
+
+    @NotEmpty(message = "Campo diretoria é obrigatorio.")
+    @NotNull(message = "Campo diretoria é obrigatorio.")
     private String diretoria;
-    @NotEmpty
-    @NotNull
+
+    @NotEmpty(message = "Campo outorga é obrigatorio.")
+    @NotNull(message = "Campo outorga é obrigatorio.")
     private String outorga;
-    @NotEmpty
-    @NotNull
+
+    @NotEmpty(message = "Campo titularidade é obrigatorio.")
+    @NotNull(message = "Campo titularidade é obrigatorio.")
     private String titularidade;
 
 }
