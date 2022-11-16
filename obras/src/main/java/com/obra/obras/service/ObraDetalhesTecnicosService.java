@@ -1,7 +1,19 @@
 package com.obra.obras.service;
 
-import org.springframework.stereotype.Service;
+import java.util.Optional;
 
-@Service
+//import org.springframework.stereotype.Service;
+
+import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
+import com.obra.obras.rest.dto.ObraDetalhesTecnicosDTO;
+
+
 public interface ObraDetalhesTecnicosService {
+
+    ObraDetalhesTecnicos salvar(ObraDetalhesTecnicosDTO obraDetalhesTecnicosDTO);
+
+    Optional<ObraDetalhesTecnicos> obterObraDetalhesTecnicos(Integer id);
+
+    Optional<ObraDetalhesTecnicos> atualizaObraDetalhesTecnicos(Integer id, ObraDetalhesTecnicos obraDetalhesTecnicos);
+
 }

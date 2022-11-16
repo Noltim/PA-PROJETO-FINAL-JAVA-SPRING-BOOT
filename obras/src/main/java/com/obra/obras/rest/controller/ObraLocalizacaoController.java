@@ -2,9 +2,15 @@ package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.ObraLocalizacao;
 import com.obra.obras.domain.repository.ObraLocalizacaoRepository;
+import com.obra.obras.exception.RegraNegocioException;
+import com.obra.obras.rest.dto.GetObraLocalizacaoDTO;
+import com.obra.obras.rest.dto.ObraLocalizacaoDTO;
+import com.obra.obras.service.ObraLocalizacaoService;
+
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -17,23 +23,48 @@ import static org.springframework.http.HttpStatus.*;
 public class ObraLocalizacaoController {
 
     private ObraLocalizacaoRepository obraLocalizacaoRepository;
+    private ObraLocalizacaoService obraLocalizacaoService;
 
     public ObraLocalizacaoController(ObraLocalizacaoRepository obraLocalizacaoRepository) {
         this.obraLocalizacaoRepository = obraLocalizacaoRepository;
     }
 
-
     @GetMapping(value = "{id}")
     @ResponseStatus(OK)
+    /*
+     * O tipo de retorno deve ser GetObraLocalizacaoDTO, mas ainda em busca da
+     * logica para converter
+     */
     public ObraLocalizacao getObraLocalById(@PathVariable Integer id) {
-        return obraLocalizacaoRepository
-                .findById(id)
-                .orElseThrow(() ->
-                        new ResponseStatusException(HttpStatus.NOT_FOUND,
-                                "Localização de obra não encontrada"));
+        return obraLocalizacaoService
+                .obterObraLocalizacao(id)
+                .orElseThrow(() -> new RegraNegocioException(
+                        "Detalhe tecnico não encontrado. " +
+                                "Por favor, verifique os campos obrigatorios e tente novamente. "));
+    }
+
+    /*
+     * Em busca da resolução do erro, precisa ser feita uma conversão entre o tipo
+     * obraLocalizacao para ObraLocalizacaoDTO
+     */
+
+    private GetObraLocalizacaoDTO converter(ObraLocalizacao obraLocalizacao) {
+        return GetObraLocalizacaoDTO
+                .builder()
+                .id(obraLocalizacao.getId())
+                .obraId(obraLocalizacao.getObraId())
+                .cidade(obraLocalizacao.getCidade())
+                .estado(obraLocalizacao.getEstado())
+                .longitude(obraLocalizacao.getLongitude())
+                .latitude(obraLocalizacao.getLatitude())
+                .build();
     }
 
     @GetMapping
+    /*
+     * O tipo de retorno deve ser GetObraLocalizacaoDTO, mas ainda em busca da
+     * logica para converter
+     */
     public List<ObraLocalizacao> find(ObraLocalizacao filtro) {
         ExampleMatcher encontrar = ExampleMatcher
                 .matching()
@@ -45,8 +76,12 @@ public class ObraLocalizacaoController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public ObraLocalizacao save(@RequestBody ObraLocalizacao obraLocalizacao) {
-        return obraLocalizacaoRepository.save(obraLocalizacao);
+    /*
+     * O tipo de retorno deve ser GetObraLocalizacaoDTO, mas ainda em busca da
+     * logica para converter
+     */
+    public ObraLocalizacao save(@RequestBody ObraLocalizacaoDTO obraLocalizacaoDTO) {
+        return obraLocalizacaoService.salvar(obraLocalizacaoDTO);
     }
 
     @DeleteMapping("{id}")
@@ -56,22 +91,15 @@ public class ObraLocalizacaoController {
                 .map(ObraLocalizacao -> {
                     obraLocalizacaoRepository.delete(ObraLocalizacao);
                     return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Localização de obra não encontrada"));
+                }).orElseThrow(
+                        () -> new RegraNegocioException("Localização não encontrada. " +
+                        "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void update(@PathVariable Integer id,
-                       @RequestBody ObraLocalizacao obraLocalizacao) {
-        obraLocalizacaoRepository
-                .findById(id)
-                .map(obraLocalizacaoExistente -> {
-                    obraLocalizacao.setId(obraLocalizacaoExistente.getId());
-
-                    obraLocalizacaoRepository.save(obraLocalizacao);
-                    return obraLocalizacaoExistente;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                        "Localização de obra não encontrada"));
+            @RequestBody @Validated ObraLocalizacao obraLocalizacao) {
+        obraLocalizacaoService.atualizaObraLocalizacao(id, obraLocalizacao);
     }
 }
-

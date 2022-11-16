@@ -1,4 +1,54 @@
 package com.obra.obras.service.impl;
 
-public class ObraLocalizacaoServiceImpl {
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.obra.obras.domain.entity.ObraLocalizacao;
+import com.obra.obras.domain.repository.ObraLocalizacaoRepository;
+import com.obra.obras.exception.RegraNegocioException;
+import com.obra.obras.rest.dto.ObraLocalizacaoDTO;
+import com.obra.obras.service.ObraLocalizacaoService;
+
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
+public class ObraLocalizacaoServiceImpl implements ObraLocalizacaoService {
+
+    private final ObraLocalizacaoRepository obraLocalizacaoRepository;
+
+    @Override
+    @Transactional
+    public ObraLocalizacao salvar(ObraLocalizacaoDTO obraLocalizacaoDTO) {
+
+        ObraLocalizacao obraLocalizacaoNovo = new ObraLocalizacao();
+        obraLocalizacaoNovo.setObraId(obraLocalizacaoDTO.getObraId());
+        obraLocalizacaoNovo.setCidade(obraLocalizacaoDTO.getCidade());
+        obraLocalizacaoNovo.setEstado(obraLocalizacaoDTO.getEstado());
+        obraLocalizacaoNovo.setLatitude(obraLocalizacaoDTO.getLatitude());
+        obraLocalizacaoNovo.setLongitude(obraLocalizacaoDTO.getLongitude());
+
+        return obraLocalizacaoRepository.save(obraLocalizacaoNovo);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<ObraLocalizacao> obterObraLocalizacao(Integer id) {
+        return obraLocalizacaoRepository.findById(id);
+    }
+
+    @Override
+    public Optional<ObraLocalizacao> atualizaObraLocalizacao(Integer id,
+            ObraLocalizacao obraLocalizacao) {
+        obraLocalizacaoRepository.findById(id)
+                .map(obraLocalizacaoExistente -> {
+                    obraLocalizacao.setId(obraLocalizacaoExistente.getId());
+                    obraLocalizacaoRepository.save(obraLocalizacao);
+                    return obraLocalizacaoExistente;
+                }).orElseThrow(() -> new RegraNegocioException("Detalhes tecnicos não encontrados. " +
+                        "Por favor, verifique os campos obrigatorios e tente novamente. "));
+        return null;
+    }
 }

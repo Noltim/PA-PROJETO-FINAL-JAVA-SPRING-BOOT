@@ -56,7 +56,7 @@ public class ObraController {
 
     //passar para o DTO
     @GetMapping
-    public List<Obra> find(Obra filtro) {
+    public List<GetObraDTO> find(Obra filtro) {
         ExampleMatcher encontrar = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
