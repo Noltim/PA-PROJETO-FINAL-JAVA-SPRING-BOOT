@@ -38,8 +38,8 @@ public class UsuarioController {
     public TokenDTO autenticar(@RequestBody CredenciaisDTO credenciaisDTO) {
         try {
             Usuario usuario = Usuario.builder()
-                                .login(credenciaisDTO.getLogin())
-                                .senha(credenciaisDTO.getSenha()).build();
+                    .login(credenciaisDTO.getLogin())
+                    .senha(credenciaisDTO.getSenha()).build();
             UserDetails usuarioAutenticado = usuarioService.autenticar(usuario);
             String token = jwtService.gerarToken(usuario);
 

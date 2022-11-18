@@ -2,11 +2,16 @@ package com.obra.obras.rest.controller;
 
 import com.obra.obras.domain.entity.Inspecao;
 import com.obra.obras.domain.repository.InspecaoRepository;
+import com.obra.obras.exception.RegraNegocioException;
+import com.obra.obras.service.InspecaoService;
+
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
+//import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+//import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -17,17 +22,20 @@ import static org.springframework.http.HttpStatus.*;
 public class InspecaoController {
 
     private InspecaoRepository inspecaoRepository;
+    private InspecaoService inspecaoService;
 
-    public InspecaoController(InspecaoRepository inspecaoRepository) {
+    public InspecaoController(InspecaoRepository inspecaoRepository, InspecaoService inspecaoService) {
         this.inspecaoRepository = inspecaoRepository;
+        this.inspecaoService = inspecaoService;
     }
 
     @GetMapping(value = "{id}")
     @ResponseStatus(OK)
     public Inspecao getInspecoesById(@PathVariable Integer id) {
-        return inspecaoRepository
-                .findById(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Inspeção não encontrada"));
+        return inspecaoService
+                .obterInspecao(id)
+                .orElseThrow(() -> new RegraNegocioException("Inspecao não encontrada. " +
+                "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 
     @GetMapping
@@ -44,7 +52,7 @@ public class InspecaoController {
     @PostMapping
     @ResponseStatus(CREATED)
     public Inspecao save(@RequestBody Inspecao inspecao) {
-        return inspecaoRepository.save(inspecao);
+        return inspecaoService.salvar(inspecao);
     }
 
     @DeleteMapping("{id}")
@@ -54,22 +62,15 @@ public class InspecaoController {
                 .map(inspecao -> {
                     inspecaoRepository.delete(inspecao);
                     return Void.TYPE;
-                }).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                        "Inspeção não encontrada"));
+                }).orElseThrow(() -> new RegraNegocioException("Inspeção não encontrada. " +
+                        "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void update(@PathVariable Integer id,
-                       @RequestBody Inspecao inspecao) {
-        inspecaoRepository
-                .findById(id)
-                .map(inspecaoExistente -> {
-                    inspecao.setId(inspecaoExistente.getId());
-                    inspecaoRepository.save(inspecao);
-                    return inspecaoExistente;
-                }).orElseThrow(() -> new ResponseStatusException(NOT_FOUND,
-                        "Inspeção não encontrada"));
+            @RequestBody Inspecao inspecao) {
+        inspecaoService.atualizaInspecao(id, inspecao);
     }
 
 }

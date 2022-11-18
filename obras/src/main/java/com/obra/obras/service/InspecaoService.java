@@ -1,7 +1,16 @@
 package com.obra.obras.service;
 
-import org.springframework.stereotype.Service;
+import java.util.Optional;
 
-@Service
+import com.obra.obras.domain.entity.Inspecao;
+
+//import org.springframework.stereotype.Service;
+
 public interface InspecaoService {
+
+    Inspecao salvar(Inspecao inspecao);
+
+    Optional<Inspecao> obterInspecao(Integer id);
+
+    Optional<Inspecao> atualizaInspecao(Integer id, Inspecao inspecao);
 }
