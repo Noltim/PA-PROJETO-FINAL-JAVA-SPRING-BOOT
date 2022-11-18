@@ -34,7 +34,8 @@ public class InspecaoController {
     public Inspecao getInspecoesById(@PathVariable Integer id) {
         return inspecaoService
                 .obterInspecao(id)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Inspeção não encontrada"));
+                .orElseThrow(() -> new RegraNegocioException("Inspecao não encontrada. " +
+                "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 
     @GetMapping

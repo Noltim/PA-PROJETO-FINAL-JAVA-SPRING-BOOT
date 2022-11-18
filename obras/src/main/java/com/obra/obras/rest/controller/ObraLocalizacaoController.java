@@ -25,8 +25,9 @@ public class ObraLocalizacaoController {
     private ObraLocalizacaoRepository obraLocalizacaoRepository;
     private ObraLocalizacaoService obraLocalizacaoService;
 
-    public ObraLocalizacaoController(ObraLocalizacaoRepository obraLocalizacaoRepository) {
+    public ObraLocalizacaoController(ObraLocalizacaoRepository obraLocalizacaoRepository, ObraLocalizacaoService obraLocalizacaoService) {
         this.obraLocalizacaoRepository = obraLocalizacaoRepository;
+        this.obraLocalizacaoService = obraLocalizacaoService;
     }
 
     @GetMapping(value = "{id}")

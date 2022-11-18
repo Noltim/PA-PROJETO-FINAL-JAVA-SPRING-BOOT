@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.obra.obras.domain.entity.ObraInspecao;
 import com.obra.obras.domain.repository.ObraInspecaoRepository;
@@ -34,7 +35,7 @@ public class ObraInspecaoServiceImpl implements ObraInspecaoService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<ObraInspecao> obterObraInspecao(Integer id) {
+    public Optional<ObraInspecao> obterObraInspecao(@PathVariable Integer id) {
         return obraInspecaoRepository.findById(id);
     }
 

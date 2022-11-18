@@ -10,7 +10,7 @@ import com.obra.obras.service.ObraDetalhesTecnicosService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 //import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
+//import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 //import org.springframework.web.server.ResponseStatusException;
 
@@ -25,8 +25,9 @@ public class ObraDetalhesTecnicosController {
     private ObraDetalhesTecnicosRepository obraDetalhesTecnicosRepository;
     private ObraDetalhesTecnicosService obraDetalhesTecnicosService;
 
-    public ObraDetalhesTecnicosController(ObraDetalhesTecnicosRepository obraDetalhesTecnicosRepository) {
+    public ObraDetalhesTecnicosController(ObraDetalhesTecnicosRepository obraDetalhesTecnicosRepository, ObraDetalhesTecnicosService obraDetalhesTecnicosService) {
         this.obraDetalhesTecnicosRepository = obraDetalhesTecnicosRepository;
+        this.obraDetalhesTecnicosService = obraDetalhesTecnicosService;
     }
 
     @GetMapping(value = "{id}")
@@ -99,7 +100,7 @@ public class ObraDetalhesTecnicosController {
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void update(@PathVariable Integer id,
-            @RequestBody @Validated ObraDetalhesTecnicos obraDetalhesTecnicos) {
+            @RequestBody ObraDetalhesTecnicos obraDetalhesTecnicos) {
         obraDetalhesTecnicosService.atualizaObraDetalhesTecnicos(id, obraDetalhesTecnicos);
     }
 
