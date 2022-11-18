@@ -8,6 +8,7 @@ import com.obra.obras.service.ObraService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -16,7 +17,6 @@ import java.util.Optional;
 public class ObraServiceImpl implements ObraService {
 
     private final ObraRepository obraRepository;
-
 
     @Override
     @Transactional
@@ -36,7 +36,7 @@ public class ObraServiceImpl implements ObraService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Obra> obterObra(Integer id) {
+    public Optional<Obra> obterObra(@PathVariable Integer id) {
         return obraRepository.findById(id);
     }
 

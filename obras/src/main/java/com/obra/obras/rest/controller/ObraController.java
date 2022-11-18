@@ -54,7 +54,7 @@ public class ObraController {
 
     //passar para o DTO
     @GetMapping
-    public List<Obra> find(Obra filtro) {
+    public List<GetObraDTO> find(Obra filtro) {
         ExampleMatcher encontrar = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
@@ -72,7 +72,7 @@ public class ObraController {
         return obra;
     }
 
-    //colocar para retornar um DTO
+    // colocar para retornar um DTO
     @DeleteMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void delete(@PathVariable Integer id) {
@@ -96,13 +96,3 @@ public class ObraController {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
