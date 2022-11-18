@@ -2,6 +2,7 @@ package com.obra.obras.service.impl;
 
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,6 +12,8 @@ import com.obra.obras.exception.RegraNegocioException;
 import com.obra.obras.service.InspecaoService;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +35,7 @@ public class InspecaoServiceImpl implements InspecaoService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Inspecao> obterInspecao(Integer id) {
+    public Optional<Inspecao> obterInspecao(@PathVariable Integer id) {
         return inspecaoRepository.findById(id);
     }
 

@@ -8,7 +8,9 @@ import com.obra.obras.service.InspecaoService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 //import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 //import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -22,8 +24,9 @@ public class InspecaoController {
     private InspecaoRepository inspecaoRepository;
     private InspecaoService inspecaoService;
 
-    public InspecaoController(InspecaoRepository inspecaoRepository) {
+    public InspecaoController(InspecaoRepository inspecaoRepository, InspecaoService inspecaoService) {
         this.inspecaoRepository = inspecaoRepository;
+        this.inspecaoService = inspecaoService;
     }
 
     @GetMapping(value = "{id}")
@@ -31,8 +34,7 @@ public class InspecaoController {
     public Inspecao getInspecoesById(@PathVariable Integer id) {
         return inspecaoService
                 .obterInspecao(id)
-                .orElseThrow(() -> new RegraNegocioException("Inspeção não encontrada. " +
-                        "Por favor, verifique os campos obrigatorios e tente novamente. "));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Inspeção não encontrada"));
     }
 
     @GetMapping

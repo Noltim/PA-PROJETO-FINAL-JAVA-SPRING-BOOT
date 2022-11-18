@@ -23,8 +23,9 @@ public class ObraInspecaoController {
     private ObraInspecaoRepository obraInspecaoRepository;
     private ObraInspecaoService obraInspecaoService;
 
-    public ObraInspecaoController(ObraInspecaoRepository obraInspecaoRepository) {
+    public ObraInspecaoController(ObraInspecaoRepository obraInspecaoRepository, ObraInspecaoService obraInspecaoService) {
         this.obraInspecaoRepository = obraInspecaoRepository;
+        this.obraInspecaoService = obraInspecaoService;
     }
 
     @GetMapping(value = "{id}")
