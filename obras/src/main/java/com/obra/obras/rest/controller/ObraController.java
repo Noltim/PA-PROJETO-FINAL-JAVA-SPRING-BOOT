@@ -11,7 +11,6 @@ import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
@@ -53,7 +52,6 @@ public class ObraController {
     }
 
 
-
     //passar para o DTO
     @GetMapping
     public List<Obra> find(Obra filtro) {
@@ -87,26 +85,12 @@ public class ObraController {
                         "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 
-//    //retorna um DTO
-//    @PutMapping("{id}")
-//    @ResponseStatus(NO_CONTENT)
-//    public void update(@PathVariable Integer id,
-//                       @RequestBody Obra obra) {
-//        obraRepository
-//                .findById(id)
-//                .map(obraExistente -> {
-//                    obra.setId(obraExistente.getId());
-//
-//                    obraRepository.save(obra);
-//                    return obraExistente;
-//                }).orElseThrow(() -> new RegraNegocioException("Obra não encontrada. " +
-//                        "Por favor, verifique os campos obrigatorios e tente novamente. "));
-//    }
 
+    //retorna um dto
     @PutMapping("{id}")
     @ResponseStatus(NO_CONTENT)
     public void update(@PathVariable Integer id,
-                       @RequestBody @Validated Obra obra){
+                       @RequestBody @Validated Obra obra) {
         obraService.atualizaObra(id, obra);
 
     }

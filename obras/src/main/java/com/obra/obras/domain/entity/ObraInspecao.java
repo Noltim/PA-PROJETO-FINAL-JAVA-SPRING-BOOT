@@ -25,10 +25,10 @@ public class ObraInspecao {
     private Obra obraId;
     @Enumerated(EnumType.STRING)
     private InspecaoFrequenciaEnum frequencia;
-    private int mes;
+    private Integer mes;
     @Enumerated(EnumType.STRING)
     private InspecaoStatusEnum status;
-    private int prioridade;
+    private Integer prioridade;
 
     @JsonIgnore
     @OneToMany(mappedBy = "obraInspecaoId", fetch = FetchType.LAZY)
