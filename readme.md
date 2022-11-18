@@ -83,13 +83,16 @@ Para conseguir implantar o projeto siga as seguintes recomendações:
 2.1° - Baixe as extensões do spring boot
 ```
 ```
-3° - Procure o arquivo "ObrasApplication" e inicie o programa no play.
+3° - Abra o MySQL e crie o banco "projeto_obra". PS: Lembre de trocar em properties as senhas de connecção do banco para evitar conflitos.
 ```
 ```
-4° - Abra o postman e importe a colletion "nome da collection"
+4° - Procure o arquivo "ObrasApplication" e inicie o programa no play.
 ```
 ```
-5° - Abra a funcionalidade que deseja testar e envie a solicitação.
+5° - Abra o postman e importe a colletion "nome da collection" e as variaveis de ambiente "nome da collection"
+```
+```
+6° - Abra a funcionalidade no postman que deseja testar e envie a solicitação.
 ```
 
 ## 📌 Versão
