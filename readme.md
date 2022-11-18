@@ -80,10 +80,19 @@ Para conseguir implantar o projeto siga as seguintes recomendações:
 2° - Abra a pasta baixada no VS code
 ```
 ```
-3° - Use o atalho CTRL + " para abrir o terminal
+2.1° - Baixe as extensões do spring boot
 ```
 ```
-4° - Inicie o projeto com o comando: ( COLOCAR COMANDO AQUI)
+3° - Abra o MySQL e crie o banco "projeto_obra". PS: Lembre de trocar em properties as senhas de connecção do banco para evitar conflitos.
+```
+```
+4° - Procure o arquivo "ObrasApplication" e inicie o programa no play.
+```
+```
+5° - Abra o postman e importe a colletion "nome da collection" e as variaveis de ambiente "nome da collection"
+```
+```
+6° - Abra a funcionalidade no postman que deseja testar e envie a solicitação.
 ```
 
 ## 📌 Versão
@@ -94,13 +103,13 @@ Nós usamos [GIT](https://git-scm.com/downloads) para controle de versão no [GI
 
 Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
-* **José Milton de Oliveira Neto** - *Dev. Backend* - [Noltim](https://github.com/Noltim)
+* **José Milton de Oliveira Neto** - *SM/PO/Dev. Backend* - [Noltim](https://github.com/Noltim)
 * **Dielder Gabriel Arruda Leal** - *Dev. Backend* - [Dielder](https://github.com/Dielder)
 * **Leonardo Emanuel Souza dos Santos** - *Dev. Backend* - [Leo](https://github.com/LeonardoEsantos)
 * **Alex Fernando Alves da Silva** - *A declarar* - [Alex](https://github.com/alexfrnn)
-* **João Vitor Pedrosa De Lira** - *A declarar* - [MãoZinha](https://github.com/vitorliras)
-* **Matheus Henrique Chagas** - *A declarar* - [Esquerdinha](https://github.com/MatheusChagas123)
-* **Davi Pereira Morato Costa** - *A declarar* - [PaiDeTodos](https://github.com/DaviMorato)
+* **João Vitor Pedrosa De Lira** - *Dev. Front* - [Vitor](https://github.com/vitorliras)
+* **Matheus Henrique Chagas** - *Dev. Front* - [Matheus](https://github.com/MatheusChagas123)
+* **Davi Pereira Morato Costa** - *A declarar* - [Davi](https://github.com/DaviMorato)
 
 
 
@@ -111,7 +120,6 @@ Você também pode ver a lista de todos os [colaboradores](https://github.com/No
 
 * Conte a outras pessoas sobre este projeto 📢;
 * Convide alguém da equipe para uma cerveja 🍺;
-* Um agradecimento publicamente 🫂;
-* etc.
+
 
 
