@@ -7,9 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
 import com.obra.obras.domain.repository.ObraDetalhesTecnicosRepository;
-import com.obra.obras.domain.repository.ObraRepository;
+//import com.obra.obras.domain.repository.ObraRepository;
 import com.obra.obras.exception.RegraNegocioException;
-import com.obra.obras.rest.dto.ObraDetalhesTecnicosDTO;
+//import com.obra.obras.rest.dto.ObraDetalhesTecnicosDTO;
 import com.obra.obras.service.ObraDetalhesTecnicosService;
 
 import lombok.RequiredArgsConstructor;
@@ -22,12 +22,12 @@ public class ObraDetalhesTecnicosServiceImpl implements ObraDetalhesTecnicosServ
 
     @Override
     @Transactional
-    public ObraDetalhesTecnicos salvar(ObraDetalhesTecnicosDTO obraDetalhesTecnicosDTO) {
+    public ObraDetalhesTecnicos salvar(ObraDetalhesTecnicos obraDetalhesTecnicos) {
 
         ObraDetalhesTecnicos obraDetalhesTecnicosNovo = new ObraDetalhesTecnicos();
-        obraDetalhesTecnicosNovo.setObraId(obraDetalhesTecnicosDTO.getObraId());
-        obraDetalhesTecnicosNovo.setRisco(obraDetalhesTecnicosDTO.getRisco());
-        obraDetalhesTecnicosNovo.setTipo(obraDetalhesTecnicosDTO.getTipo());
+        obraDetalhesTecnicosNovo.setObraId(obraDetalhesTecnicos.getObraId());
+        obraDetalhesTecnicosNovo.setRisco(obraDetalhesTecnicos.getRisco());
+        obraDetalhesTecnicosNovo.setTipo(obraDetalhesTecnicos.getTipo());
 
         return obraDetalhesTecnicosRepository.save(obraDetalhesTecnicosNovo);
     }

@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.obra.obras.domain.entity.ObraLocalizacao;
 import com.obra.obras.domain.repository.ObraLocalizacaoRepository;
 import com.obra.obras.exception.RegraNegocioException;
-import com.obra.obras.rest.dto.ObraLocalizacaoDTO;
+//import com.obra.obras.rest.dto.ObraLocalizacaoDTO;
 import com.obra.obras.service.ObraLocalizacaoService;
 
 import lombok.RequiredArgsConstructor;
@@ -21,14 +21,14 @@ public class ObraLocalizacaoServiceImpl implements ObraLocalizacaoService {
 
     @Override
     @Transactional
-    public ObraLocalizacao salvar(ObraLocalizacaoDTO obraLocalizacaoDTO) {
+    public ObraLocalizacao salvar(ObraLocalizacao obraLocalizacao) {
 
         ObraLocalizacao obraLocalizacaoNovo = new ObraLocalizacao();
-        obraLocalizacaoNovo.setObraId(obraLocalizacaoDTO.getObraId());
-        obraLocalizacaoNovo.setCidade(obraLocalizacaoDTO.getCidade());
-        obraLocalizacaoNovo.setEstado(obraLocalizacaoDTO.getEstado());
-        obraLocalizacaoNovo.setLatitude(obraLocalizacaoDTO.getLatitude());
-        obraLocalizacaoNovo.setLongitude(obraLocalizacaoDTO.getLongitude());
+        obraLocalizacaoNovo.setObraId(obraLocalizacao.getObraId());
+        obraLocalizacaoNovo.setCidade(obraLocalizacao.getCidade());
+        obraLocalizacaoNovo.setEstado(obraLocalizacao.getEstado());
+        obraLocalizacaoNovo.setLatitude(obraLocalizacao.getLatitude());
+        obraLocalizacaoNovo.setLongitude(obraLocalizacao.getLongitude());
 
         return obraLocalizacaoRepository.save(obraLocalizacaoNovo);
     }

@@ -3,7 +3,7 @@ package com.obra.obras.rest.controller;
 import com.obra.obras.domain.entity.ObraLocalizacao;
 import com.obra.obras.domain.repository.ObraLocalizacaoRepository;
 import com.obra.obras.exception.RegraNegocioException;
-import com.obra.obras.rest.dto.GetObraLocalizacaoDTO;
+//import com.obra.obras.rest.dto.GetObraLocalizacaoDTO;
 import com.obra.obras.rest.dto.ObraLocalizacaoDTO;
 import com.obra.obras.service.ObraLocalizacaoService;
 
@@ -46,19 +46,18 @@ public class ObraLocalizacaoController {
     /*
      * Em busca da resolução do erro, precisa ser feita uma conversão entre o tipo
      * obraLocalizacao para ObraLocalizacaoDTO
+     * private GetObraLocalizacaoDTO converter(ObraLocalizacao obraLocalizacao) {
+     * return GetObraLocalizacaoDTO
+     * .builder()
+     * .id(obraLocalizacao.getId())
+     * .obraId(obraLocalizacao.getObraId())
+     * .cidade(obraLocalizacao.getCidade())
+     * .estado(obraLocalizacao.getEstado())
+     * .longitude(obraLocalizacao.getLongitude())
+     * .latitude(obraLocalizacao.getLatitude())
+     * .build();
+     * }
      */
-
-    private GetObraLocalizacaoDTO converter(ObraLocalizacao obraLocalizacao) {
-        return GetObraLocalizacaoDTO
-                .builder()
-                .id(obraLocalizacao.getId())
-                .obraId(obraLocalizacao.getObraId())
-                .cidade(obraLocalizacao.getCidade())
-                .estado(obraLocalizacao.getEstado())
-                .longitude(obraLocalizacao.getLongitude())
-                .latitude(obraLocalizacao.getLatitude())
-                .build();
-    }
 
     @GetMapping
     /*
@@ -80,8 +79,8 @@ public class ObraLocalizacaoController {
      * O tipo de retorno deve ser GetObraLocalizacaoDTO, mas ainda em busca da
      * logica para converter
      */
-    public ObraLocalizacao save(@RequestBody ObraLocalizacaoDTO obraLocalizacaoDTO) {
-        return obraLocalizacaoService.salvar(obraLocalizacaoDTO);
+    public ObraLocalizacao save(@RequestBody ObraLocalizacao obraLocalizacao) {
+        return obraLocalizacaoService.salvar(obraLocalizacao);
     }
 
     @DeleteMapping("{id}")
@@ -93,7 +92,7 @@ public class ObraLocalizacaoController {
                     return Void.TYPE;
                 }).orElseThrow(
                         () -> new RegraNegocioException("Localização não encontrada. " +
-                        "Por favor, verifique os campos obrigatorios e tente novamente. "));
+                                "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 
     @PutMapping("{id}")

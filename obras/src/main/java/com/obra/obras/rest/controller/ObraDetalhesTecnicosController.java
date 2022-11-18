@@ -3,16 +3,16 @@ package com.obra.obras.rest.controller;
 import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
 import com.obra.obras.domain.repository.ObraDetalhesTecnicosRepository;
 import com.obra.obras.exception.RegraNegocioException;
-import com.obra.obras.rest.dto.GetObraDetalhesTecnicosDTO;
-import com.obra.obras.rest.dto.ObraDetalhesTecnicosDTO;
+//import com.obra.obras.rest.dto.GetObraDetalhesTecnicosDTO;
+//import com.obra.obras.rest.dto.ObraDetalhesTecnicosDTO;
 import com.obra.obras.service.ObraDetalhesTecnicosService;
 
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.http.HttpStatus;
+//import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
+//import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -38,7 +38,7 @@ public class ObraDetalhesTecnicosController {
     public ObraDetalhesTecnicos getDetalhesObraById(@PathVariable Integer id) {
         return obraDetalhesTecnicosService
                 .obterObraDetalhesTecnicos(id)
-                .orElseThrow(() -> new RegraNegocioException("Detalhe tecnico não encontrado. " +
+                .orElseThrow(() -> new RegraNegocioException("Detalhes tecnicos não encontrados. " +
                         "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 
@@ -46,15 +46,18 @@ public class ObraDetalhesTecnicosController {
      * Em busca da resolução do erro, precisa ser feita uma conversão entre o tipo
      * obraDetalhesTecnicos para ObraDetalhesTecnicosDTO
      */
-    private GetObraDetalhesTecnicosDTO converter(ObraDetalhesTecnicos obraDetalhesTecnicos) {
-        return GetObraDetalhesTecnicosDTO
-                .builder()
-                .id(obraDetalhesTecnicos.getId())
-                .obraId(obraDetalhesTecnicos.getObraId())
-                .tipo(obraDetalhesTecnicos.getTipo())
-                .risco(obraDetalhesTecnicos.getRisco())
-                .build();
-    }
+    /*
+     * private GetObraDetalhesTecnicosDTO converter(ObraDetalhesTecnicos
+     * obraDetalhesTecnicos) {
+     * return GetObraDetalhesTecnicosDTO
+     * .builder()
+     * .id(obraDetalhesTecnicos.getId())
+     * .obraId(obraDetalhesTecnicos.getObraId())
+     * .tipo(obraDetalhesTecnicos.getTipo())
+     * .risco(obraDetalhesTecnicos.getRisco())
+     * .build();
+     * }
+     */
 
     @GetMapping
     /*
@@ -77,8 +80,8 @@ public class ObraDetalhesTecnicosController {
      * O tipo de retorno deve ser GetObraDetalhesTecnicosDTO, mas ainda em busca da
      * logica para converter
      */
-    public ObraDetalhesTecnicos save(@RequestBody ObraDetalhesTecnicosDTO obraDetalhesTecnicosDTO) {
-        return obraDetalhesTecnicosService.salvar(obraDetalhesTecnicosDTO);
+    public ObraDetalhesTecnicos save(@RequestBody ObraDetalhesTecnicos obraDetalhesTecnicos) {
+        return obraDetalhesTecnicosService.salvar(obraDetalhesTecnicos);
     }
 
     @DeleteMapping("{id}")
@@ -89,7 +92,7 @@ public class ObraDetalhesTecnicosController {
                     obraDetalhesTecnicosRepository.delete(obraDetalhesTecnicos);
                     return Void.TYPE;
                 })
-                .orElseThrow(() -> new RegraNegocioException("Obra não encontrada. " +
+                .orElseThrow(() -> new RegraNegocioException("Detalhes tecnicos não encontrados. " +
                         "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 

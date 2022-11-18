@@ -7,10 +7,9 @@ import com.obra.obras.rest.dto.ObraLocalizacaoDTO;
 
 //import org.springframework.stereotype.Service;
 
-
 public interface ObraLocalizacaoService {
 
-    ObraLocalizacao salvar(ObraLocalizacaoDTO obraLocalizacaoDTO);
+    ObraLocalizacao salvar(ObraLocalizacao obraLocalizacao);
 
     Optional<ObraLocalizacao> obterObraLocalizacao(Integer id);
 

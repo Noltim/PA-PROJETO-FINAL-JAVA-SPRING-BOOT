@@ -17,7 +17,6 @@ public class ObraServiceImpl implements ObraService {
 
     private final ObraRepository obraRepository;
 
-
     @Override
     @Transactional
     public Obra salvar(ObraDTO obraDTO) {
