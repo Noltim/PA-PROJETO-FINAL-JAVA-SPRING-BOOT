@@ -19,6 +19,7 @@ import EditObraInspecao from './models/obraInspecao/EditObraInspecao';
 import AddInspecao from './models/Inspecao/AddInspecao';
 import ViewInspecao from './models/Inspecao/ViewInspecao';
 import EditInspecao from './models/Inspecao/EditInspecao';
+import Login from './pages/login';
 
 
 function App() {
@@ -27,8 +28,13 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          <Route exact path="/login" element={<Login />} />
+
           <Route exact path="/" element={<Home />} />
+          
           <Route exact path="/adduser" element={<AddUser />} />
+
+
 
           <Route exact path="/addobra" element={<AddObra />} />
           <Route exact path="/viewobra" element={<ViewObra />} />
