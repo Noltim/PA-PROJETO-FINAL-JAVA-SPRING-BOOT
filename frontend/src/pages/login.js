@@ -1,12 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 const App = () => {
     const [login, setLogin] = useState("");
     const [senha, setSenha] = useState("");
-    const [user, setUser] = useState()
+    const [user, setUser] = useState();
     let navigate = useNavigate();
+
+    useEffect(() => {
+        const loggedInUser = localStorage.getItem(user);
+        if (loggedInUser) {
+            const foundUser = JSON.parse(loggedInUser);
+            setUser(foundUser);
+        }
+    }, []);
+
+    // logout the user
+    const handleLogout = () => {
+        localStorage.clear();
+        navigate("/")
+        
+    };
+
+
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -20,13 +37,19 @@ const App = () => {
         setUser(response.data)
         // armazenar o usuário em localStorage
         localStorage.setItem('user', response.data)
-        console.log(response.data)
+        console.log(response.data) // depois de consultar se estar vindo deletar daqui
     };
+
+
 
     // Se houver um usuário, mostre a mensagem abaixo
     if (user) {
-        return <div>{user.login} is logged in</div>;
-        // "usuário" está conectado
+        return (
+            <div>
+                {user.name} is loggged in
+                <button onClick={handleLogout} className="btn btn-outline-danger mx-2" to="/">logout</button>
+            </div>
+        );
     }
 
     // Se não houver um usuário, mostre o formulário de login
@@ -48,17 +71,17 @@ const App = () => {
                             />
                         </div>
                         <div className="mb-3">
-                            
-                                <label htmlFor="senha" className='form-label'>Senha: </label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    name='senha'
-                                    value={senha}
-                                    placeholder="insira uma senha"
-                                    onChange={({ target }) => setSenha(target.value)}
-                                />
-                            
+
+                            <label htmlFor="senha" className='form-label'>Senha: </label>
+                            <input
+                                type="password"
+                                className="form-control"
+                                name='senha'
+                                value={senha}
+                                placeholder="insira uma senha"
+                                onChange={({ target }) => setSenha(target.value)}
+                            />
+
                         </div>
                         <button type="submit" className="btn btn-outline-success">Login</button>
                         <Link className="btn btn-outline-danger mx-2" to="/">

@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
 export default function Home() {
 
   
   return (
 
     <div className='container'>
+      {  !localStorage.length? 
       <div class="alert alert-primary" role="alert">
         Para acessar as consultas será necessário estar logado no sistema.
-      </div>
+      </div>:""
+      }
       <div className='py-4'>
         <table className="table table-bordered shadow table-striped">
           <thead className="table-dark">
