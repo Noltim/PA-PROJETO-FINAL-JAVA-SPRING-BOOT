@@ -95,6 +95,10 @@ Para conseguir implantar o projeto siga as seguintes recomendações:
 6° - Abra a funcionalidade no postman que deseja testar e envie a solicitação.
 ```
 
+
+Para conferir os endpoints e como aplicar confira o [DOCUMENTAÇÃO SWAGGER](http://localhost:8080/swagger-ui/index.html#/) da api.
+
+
 ## 📌 Versão
 
 Nós usamos [GIT](https://git-scm.com/downloads) para controle de versão no [GITHUB](https://github.com/Noltim/PA-PROJETO-FINAL-JAVA-SPRING-BOOT). Para as versões disponíveis, observe as [tags neste repositório](https://github.com/Noltim/PA-PROJETO-FINAL-JAVA-SPRING-BOOT). 

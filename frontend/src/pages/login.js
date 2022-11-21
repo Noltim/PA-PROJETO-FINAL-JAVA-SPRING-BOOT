@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
+import {axiosInstance} from "../api/api"
 
 const App = () => {
     const [login, setLogin] = useState("");
     const [senha, setSenha] = useState("");
     const [user, setUser] = useState();
+    
+    
     let navigate = useNavigate();
+
+
 
     useEffect(() => {
         const loggedInUser = localStorage.getItem(user);
@@ -36,11 +41,22 @@ const App = () => {
         // definir o state do usuário
         setUser(response.data)
         // armazenar o usuário em localStorage
-        localStorage.setItem('user', response.data)
-        console.log(response.data) // depois de consultar se estar vindo deletar daqui
+        let token = "Bearer " + response.data.token;
+        localStorage.setItem('user', token)
+        console.log(response.data)
+       // depois de consultar se estar vindo deletar daqui
+       
+       
+       console.log(token);
+
+       axiosInstance.interceptors.request.use((config)=> {
+        config.headers.token = token;
+       })   
+       
     };
 
-
+    
+    
 
     // Se houver um usuário, mostre a mensagem abaixo
     if (user) {

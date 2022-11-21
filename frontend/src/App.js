@@ -20,6 +20,7 @@ import AddInspecao from './models/Inspecao/AddInspecao';
 import ViewInspecao from './models/Inspecao/ViewInspecao';
 import EditInspecao from './models/Inspecao/EditInspecao';
 import Login from './pages/login';
+import ViewObraId from './models/obras/ViewObraId';
 
 
 function App() {
@@ -37,8 +38,9 @@ function App() {
 
 
           <Route exact path="/addobra" element={<AddObra />} />
-          <Route exact path="/viewobra" element={<ViewObra />} />
           <Route exact path="/editobra" element={<EditObra />} />
+          <Route exact path="/viewobra" element={<ViewObra />} />
+          <Route exact path="/viewobraid" element={<ViewObraId />} />
 
 
           <Route exact path="/addobralocal" element={<AddObraLocal />} />

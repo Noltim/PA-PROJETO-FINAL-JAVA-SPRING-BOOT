@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { axiosInstance } from '../api/api';
 
 export default function Home() {
 
   const [users, setUsers] = useState([])
 
   useEffect(() => {
+    const loadUsers = async () => {
+      const result = await axiosInstance.get(`http:/localhost:8080/api/obras/${id}`)
+      setUsers(result.data);
+    };
     loadUsers();
   }, []);
 
-  const loadUsers = async () => {
-    const result = await axios.get("http://localhost:8080/api/obras")
-    setUsers(result.data);
-  };
+
 
   return (
     <div className='container'>
