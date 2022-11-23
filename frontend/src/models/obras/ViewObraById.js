@@ -1,8 +1,8 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { axiosInstance } from '../../api/api';
 
-export default function ViewObraId() {
+export default function ViewObraById() {
 
   const [obra, setObra] = useState({
     nome: "",
@@ -14,25 +14,26 @@ export default function ViewObraId() {
     titularidade: ""
 
   });
-  const{id} = useParams();
-
-  const loadObra = async () => {
-    let token = localStorage.getItem("user")
-    const result = await axios.get(`http://localhost:8080/api/obras/${id}`, { headers: { "Authorization": token } })
-    setObra(result.data);
-
-  }
+  const [id, setId] = useState("");
 
   useEffect(() => {
+    const loadObra = async () => {
+      let token = localStorage.getItem("user")
+      const result = await axiosInstance.get(`http://localhost:8080/api/obras/${id}`,{headers:{"Authorization": token}})
+      setObra(result.data);
+     
+    }
     loadObra()
   }, []);
+
+
 
   return (
     <div className='conteiner'>
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4"> Obra Detalhes id : ${obra.id}</h2>
-          {/* <form>
+          <h2 className="text-center m-4"> Obra Detalhes</h2>
+          <form>
             <div className="mb-3">
               <label htmlFor="id" className='form-label'>
                 id do usuário: </label>
@@ -47,10 +48,10 @@ export default function ViewObraId() {
               />
             </div>
             <button className="btn btn-outline-success">Search ID</button>
-          </form> */}
+          </form>
           <div className="card">
             <div className='card-header'>
-              Detalhe da Obra: {obra.id}
+              Details of obra id: {obra.id}
               <ul className='list-group list-group-item'>
                 <li className='list-group-item'>
                   <b>Nome:</b>
@@ -83,7 +84,7 @@ export default function ViewObraId() {
               </ul>
             </div>
           </div>
-          <Link className="btn btn-primary my-2" to={"/viewobra"}>Voltar</Link>
+          <Link className="btn btn-primary my-2" to="/">Back to home</Link>
         </div>
       </div>
     </div>

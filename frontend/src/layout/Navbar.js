@@ -26,9 +26,9 @@ export default function Navbar() {
                                 <a className="nav-link active" aria-current="page" href="/adduser">Cadastrar</a>
                             </li> */}
 
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <a className="nav-link active" aria-current="page" href="/viewobraid">Obra ID</a>
-                            </li>
+                            </li> */}
 
                         </ul>
 
