@@ -23,6 +23,8 @@ import Login from './pages/login';
 import ViewObraId from './models/obras/ViewObraId';
 import ViewObraLocalById from './models/obraLocalizacao/ViewObraLocalById';
 import ViewObraInspecaoByID from './models/obraInspecao/ViewObraInspecaoByID';
+import ViewDetalhesObrasById from './models/obraDetalhesTecnicos/ViewDetalhesObrasById';
+import ViewInspecaoById from './models/Inspecao/ViewInspecaoById';
 
 
 function App() {
@@ -53,7 +55,9 @@ function App() {
 
           <Route exact path="/addobradetalhes" element={<AddObraDetalhes />} />
           <Route exact path="/viewobradetalhes" element={<ViewObraDetalhes />} />
-          <Route exact path="/editobradetalhes" element={<EditObraDetalhes />} />
+          <Route exact path="/editobradetalhes/:id" element={<EditObraDetalhes />} />
+          <Route exact path="/viewobradetalheid/:id" element={<ViewDetalhesObrasById />} />
+
 
 
           <Route exact path="/addobrainspecao" element={<AddObraInspecao />} />
@@ -64,7 +68,9 @@ function App() {
 
           <Route exact path="/addinspecao" element={<AddInspecao />} />
           <Route exact path="/viewinspecao" element={<ViewInspecao />} />
-          <Route exact path="/editinspecao" element={<EditInspecao />} />
+          <Route exact path="/editinspecao/:id" element={<EditInspecao />} />
+          <Route exact path="/viewobrainspecaoid/:id" element={<ViewInspecaoById />} />
+
 
 
         </Routes>

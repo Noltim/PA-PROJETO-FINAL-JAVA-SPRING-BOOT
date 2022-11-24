@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { axiosInstance } from '../../api/api';
 
-export default function ViewObraLocalById() {
+export default function ViewInspecaoById() {
 
   const [inspecao, setInspecao] = useState({
     obraInspecaoId: "",
@@ -35,7 +35,7 @@ export default function ViewObraLocalById() {
               <ul className='list-group list-group-item'>
                 <li className='list-group-item'>
                   <b>Obra Inspenção: </b>
-                  {inspecao.inspecaoId.obraId.nome}
+                  {inspecao.obraInspecaoId.obraId.nome}
                 </li>
                 <li className='list-group-item'>
                   <b>data: </b>
