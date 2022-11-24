@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RequiredArgsConstructor
 public class InspecaoServiceImpl implements InspecaoService {
 
-    public final InspecaoRepository inspecaoRepository;
+    private final InspecaoRepository inspecaoRepository;
 
     @Override
     @Transactional
