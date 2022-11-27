@@ -107,7 +107,7 @@ Nós usamos [GIT](https://git-scm.com/downloads) para controle de versão no [GI
 
 Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
-* **José Milton de Oliveira Neto** - *SM/PO/Dev. Backend* - [Noltim](https://github.com/Noltim)
+'* **José Milton de Oliveira Neto** - *SM/PO/Dev. Backend* - [Noltim](https://github.com/Noltim)'
 * **Dielder Gabriel Arruda Leal** - *Dev. Backend* - [Dielder](https://github.com/Dielder)
 * **Leonardo Emanuel Souza dos Santos** - *Dev. Backend* - [Leo](https://github.com/LeonardoEsantos)
 * **Alex Fernando Alves da Silva** - *A declarar* - [Alex](https://github.com/alexfrnn)

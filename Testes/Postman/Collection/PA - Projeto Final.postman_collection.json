@@ -1,0 +1,1422 @@
+{
+	"info": {
+		"_postman_id": "ee528632-0b01-4e67-b5ee-f9931b52c4b5",
+		"name": "PA - Projeto Final",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20611170"
+	},
+	"item": [
+		{
+			"name": "/api/obras",
+			"item": [
+				{
+					"name": "Teste Positivos",
+					"item": [
+						{
+							"name": "Busca por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obras/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obras",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca geral",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obras",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obras"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca com filtros para implementar no front",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obras?nome=z",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obras"
+									],
+									"query": [
+										{
+											"key": "anoConstrução",
+											"value": "2022",
+											"disabled": true
+										},
+										{
+											"key": "nome",
+											"value": "z"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionar obra",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"zzzzz\",\r\n    \"anoConstrucao\": 2022,\r\n    \"coordenacao\": \"PA4\",\r\n    \"gerencia\": \"PA5\",\r\n    \"diretoria\": \"PA6\",\r\n    \"outorga\": \"PA7\",\r\n    \"titularidade\": \"PA8\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/obras",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obras"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizando obras por ID",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nome\": \"Amarelo Caminhão2\",\r\n    \"anoConstrucao\": 2022,\r\n    \"coordenacao\": \"PA4\",\r\n    \"gerencia\": \"PA5\",\r\n    \"diretoria\": \"PA6\",\r\n    \"outorga\": \"PA7\",\r\n    \"titularidade\": \"PA8\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/obras/3",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obras",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar obras por ID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obras/6",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obras",
+										"6"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Testes Negativos",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "/api/usuarios",
+			"item": [
+				{
+					"name": "Teste Positivos",
+					"item": [
+						{
+							"name": "Cadastrar usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful GET request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([201]);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 201\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"response must be valid and have a body\", function () {\r",
+											"     pm.response.to.be.success;\r",
+											"     pm.response.to.be.withBody;\r",
+											"     pm.response.to.be.json;\r",
+											"});\r",
+											"\r",
+											"const atributos = ['login', 'senha', 'id', 'admin']\r",
+											"\r",
+											"atributos.forEach((atributo) => {\r",
+											"    pm.test(`Resposta contém atributo \"${atributo}\"`, () => {\r",
+											"        pm.expect(pm.response.json()[atributo]).to.exist\r",
+											"    })\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"login\": \"testeDoTest\",\r\n  \"senha\": \"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/usuarios",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Pegar token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody)\r",
+											"\r",
+											"pm.environment.set('token', jsonData.token)\r",
+											"\r",
+											"pm.test(\"Successful GET request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([200]);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"response must be valid and have a body\", function () {\r",
+											"     pm.response.to.be.ok;\r",
+											"     pm.response.to.be.withBody;\r",
+											"     pm.response.to.be.json;\r",
+											"});\r",
+											"\r",
+											"const atributos = ['login', 'token']\r",
+											"\r",
+											"atributos.forEach((atributo) => {\r",
+											"    pm.test(`Resposta contém atributo \"${atributo}\"`, () => {\r",
+											"        pm.expect(pm.response.json()[atributo]).to.exist\r",
+											"    })\r",
+											"})\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"login\": \"testeDoTest\",\r\n  \"senha\": \"123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/usuarios/auth",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"auth"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Testes Negativos",
+					"item": [
+						{
+							"name": "Pegar token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody)\r",
+											"\r",
+											"pm.environment.set('token', jsonData.token)\r",
+											"\r",
+											"pm.test(\"Successful GET request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"response must be valid and have a body\", function () {\r",
+											"     pm.response.to.be.badRequest;\r",
+											"     pm.response.to.be.withBody;\r",
+											"     pm.response.to.be.json;\r",
+											"});\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"login\": ,\r\n  \"senha\": \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/usuarios/auth",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"usuarios",
+										"auth"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cadastrar usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Successful GET request\", function () {\r",
+											"    pm.expect(pm.response.code).to.be.oneOf([400]);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Status code name has string\", function () {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"response must be valid and have a body\", function () {\r",
+											"     pm.response.to.be.badRequest;\r",
+											"     pm.response.to.be.withBody;\r",
+											"     pm.response.to.be.json;\r",
+											"});\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"login\": \"\" ,\r\n  \"senha\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/usuarios",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "/api/inspecoes",
+			"item": [
+				{
+					"name": "Teste Positivos",
+					"item": [
+						{
+							"name": "Busca geral",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/inspecoes",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"inspecoes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca por id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/inspecoes/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"inspecoes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca com filtros para implementar no front Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obras?nome=z",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obras"
+									],
+									"query": [
+										{
+											"key": "nome",
+											"value": "z"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionando Inspeções",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"id\": 1,\r\n        \"obraInspecaoId\": {\r\n            \"id\": 1,\r\n            \"obraId\": {\r\n                \"id\": 1,\r\n                \"nome\": \"Triplex\",\r\n                \"anoConstrucao\": null,\r\n                \"coordenacao\": null,\r\n                \"gerencia\": null,\r\n                \"diretoria\": null,\r\n                \"outorga\": null,\r\n                \"titularidade\": null\r\n            },\r\n            \"frequencia\": null,\r\n            \"mes\": 0,\r\n            \"status\": null,\r\n            \"prioridade\": 0\r\n        },\r\n        \"data\": \"2022-11-18\",\r\n        \"observacoes\": null,\r\n         }\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/inspecoes",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"inspecoes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar inspeções por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/inspecoes/2",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"inspecoes",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar inspeções por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/inspecoes/3",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"inspecoes",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Testes Negativos",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "/api/upload",
+			"item": [
+				{
+					"name": "Teste Positivos",
+					"item": [
+						{
+							"name": "upload fotos",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = responseBody\r",
+											"\r",
+											"pm.environment.set('nomeFoto', jsonData.slice(32))"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/SPARTA/Desktop/Semtítulo.png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/upload",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"upload"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download fotos",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/upload/{{nomeFoto}}",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"upload",
+										"{{nomeFoto}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Testes Negativos",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "/api/obrainspecoes",
+			"item": [
+				{
+					"name": "Teste Positivos",
+					"item": [
+						{
+							"name": "Busca por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obrainspecoes/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obrainspecoes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca geral",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obrainspecoes",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obrainspecoes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca com filtros para implementar no front Copy 2",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obras?nome=z",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obras"
+									],
+									"query": [
+										{
+											"key": "nome",
+											"value": "z"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionando Obras Inspeções",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"id\": 2,\r\n        \"obraId\": {\r\n            \"id\": 1,\r\n            \"nome\": \"Triplex\",\r\n            \"anoConstrucao\": null,\r\n            \"coordenacao\": null,\r\n            \"gerencia\": null,\r\n            \"diretoria\": null,\r\n            \"outorga\": null,\r\n            \"titularidade\": null\r\n        },\r\n        \"frequencia\": null,\r\n        \"mes\": 0,\r\n        \"status\": null,\r\n        \"prioridade\": 0\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/obrainspecoes",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obrainspecoes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar obras inspeções por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/obrainspecoes/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obrainspecoes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar obras inspeções por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obrainspecoes/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obrainspecoes",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Testes Negativos",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "/api/obralocal",
+			"item": [
+				{
+					"name": "Teste Positivos",
+					"item": [
+						{
+							"name": "Busca por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obralocal/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obralocal",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca geral",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obralocal",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obralocal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca com filtros para implementar no front Copy 3",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obras?nome=z",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obras"
+									],
+									"query": [
+										{
+											"key": "nome",
+											"value": "z"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionando Obra Locais",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"id\": 1,\r\n        \"cidade\": null,\r\n        \"obraId\": {\r\n            \"id\": 1,\r\n            \"nome\": \"Triplex\",\r\n            \"anoConstrucao\": null,\r\n            \"coordenacao\": null,\r\n            \"gerencia\": null,\r\n            \"diretoria\": null,\r\n            \"outorga\": null,\r\n            \"titularidade\": null\r\n        },\r\n        \"estado\": null,\r\n        \"latitude\": null,\r\n        \"longitude\": null\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/obralocal",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obralocal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar obra local por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"id\": 1,\r\n        \"cidade\": \"up\",\r\n        \"obraId\": {\r\n            \"id\": 1,\r\n            \"nome\": \"Triplex\",\r\n            \"anoConstrucao\": 2,\r\n            \"coordenacao\": \"up\",\r\n            \"gerencia\": \"up\",\r\n            \"diretoria\": \"up\",\r\n            \"outorga\": \"up\",\r\n            \"titularidade\": \"up\"\r\n        },\r\n        \"estado\": \"up\",\r\n        \"latitude\": \"up\",\r\n        \"longitude\": \"up\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/obralocal/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obralocal",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar obra local por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obralocal/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obralocal",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Testes Negativos",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "/api/detalhesobra",
+			"item": [
+				{
+					"name": "Teste Positivos",
+					"item": [
+						{
+							"name": "Busca por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/detalhesobra/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"detalhesobra",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca geral",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/detalhesobra",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"detalhesobra"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Busca com filtros para implementar no front Copy 4",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/obras?nome=z",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"obras"
+									],
+									"query": [
+										{
+											"key": "nome",
+											"value": "z"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Adicionando Obras Detalhes",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"obraId\": {\r\n        \"id\": 1,\r\n        \"nome\": \"Triplex\",\r\n        \"anoConstrucao\": null,\r\n        \"coordenacao\": null,\r\n        \"gerencia\": null,\r\n        \"diretoria\": null,\r\n        \"outorga\": null,\r\n        \"titularidade\": null\r\n    },\r\n    \"tipo\": null,\r\n    \"risco\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/detalhesobra",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"detalhesobra"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Atualizar obra detalhes por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"obraId\": {\r\n        \"id\": 1,\r\n        \"nome\": \"Triplex\",\r\n        \"anoConstrucao\": null,\r\n        \"coordenacao\": null,\r\n        \"gerencia\": null,\r\n        \"diretoria\": null,\r\n        \"outorga\": null,\r\n        \"titularidade\": null\r\n    },\r\n    \"tipo\": null,\r\n    \"risco\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{acessoUrl}}/api/detalhesobra/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"detalhesobra",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Deletar obra detalhes por ID",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{acessoUrl}}/api/detalhesobra/1",
+									"host": [
+										"{{acessoUrl}}"
+									],
+									"path": [
+										"api",
+										"detalhesobra",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Testes Negativos",
+					"item": []
+				}
+			]
+		}
+	]
+}
