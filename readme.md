@@ -80,7 +80,7 @@ Para conseguir implantar o projeto siga as seguintes recomendações:
 2° - Abra a pasta baixada no VS code
 ```
 ```
-2.1° - Baixe as extensões do spring boot
+2.1° - Baixe as extensões do spring boot e java, caso não tenha.
 ```
 ```
 3° - Abra o MySQL e crie o banco "projeto_obra". PS: Lembre de trocar em properties as senhas de connecção do banco para evitar conflitos.
@@ -89,7 +89,13 @@ Para conseguir implantar o projeto siga as seguintes recomendações:
 4° - Procure o arquivo "ObrasApplication" e inicie o programa no play.
 ```
 ```
-5° - Abra o postman e importe a colletion "nome da collection" e as variaveis de ambiente "nome da collection"
+4.1° - Para iniciar o front abra o console, entre na pasta frontend e digite "npm install" para baixar as dependencias.
+```
+```
+4.2° - Após a pasta nodeModules ser baixada inicie a aplicação com o comando "npm start" e aguarde alguns segundos.
+```
+```
+5° - Caso deseje usa o postman abra-o e importe as collections na pasta dentro de testes.
 ```
 ```
 6° - Abra a funcionalidade no postman que deseja testar e envie a solicitação.
