@@ -3,6 +3,8 @@ package com.obra.obras.rest.dto;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.obra.obras.domain.entity.Obra;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,7 +22,7 @@ public class ObraLocalizacaoDTO {
     private String cidade;
     @NotEmpty(message = "Campo obraId é obrigatorio")
     @NotNull(message = "Campo obraId é obrigatorio")
-    private Integer obraId;
+    private Obra obraId;
     @NotEmpty(message = "Campo estado é obrigatorio")
     @NotNull(message = "Campo estado é obrigatorio")
     private String estado;
