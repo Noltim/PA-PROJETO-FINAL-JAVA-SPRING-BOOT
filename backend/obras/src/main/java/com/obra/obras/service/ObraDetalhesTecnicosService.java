@@ -6,10 +6,11 @@ import java.util.Optional;
 
 import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
 //import com.obra.obras.rest.dto.ObraDetalhesTecnicosDTO;
+import com.obra.obras.rest.dto.ObraDetalhesTecnicosDTO;
 
 public interface ObraDetalhesTecnicosService {
 
-    ObraDetalhesTecnicos salvar(ObraDetalhesTecnicos obraDetalhesTecnicos);
+    ObraDetalhesTecnicos salvar(ObraDetalhesTecnicosDTO obraDetalhesTecnicosDTO);
 
     Optional<ObraDetalhesTecnicos> obterObraDetalhesTecnicos(Integer id);
 

@@ -3,13 +3,11 @@ package com.obra.obras.service;
 import java.util.Optional;
 
 import com.obra.obras.domain.entity.ObraLocalizacao;
-//import com.obra.obras.rest.dto.ObraLocalizacaoDTO;
-
-//import org.springframework.stereotype.Service;
+import com.obra.obras.rest.dto.ObraLocalizacaoDTO;
 
 public interface ObraLocalizacaoService {
 
-    ObraLocalizacao salvar(ObraLocalizacao obraLocalizacao);
+    ObraLocalizacao salvar(ObraLocalizacaoDTO obraLocalizacaoDTO);
 
     Optional<ObraLocalizacao> obterObraLocalizacao(Integer id);
 

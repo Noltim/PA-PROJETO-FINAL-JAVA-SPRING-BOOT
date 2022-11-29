@@ -3,12 +3,11 @@ package com.obra.obras.service;
 import java.util.Optional;
 
 import com.obra.obras.domain.entity.ObraInspecao;
-
-//import org.springframework.stereotype.Service;
+import com.obra.obras.rest.dto.ObraInspecaoDTO;
 
 public interface ObraInspecaoService {
 
-    ObraInspecao salvar(ObraInspecao obraInspecao);
+    ObraInspecao salvar(ObraInspecaoDTO obraInspecaoDTO);
 
     Optional<ObraInspecao> obterObraInspecao(Integer id);
 

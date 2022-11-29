@@ -3,6 +3,7 @@ package com.obra.obras.rest.controller;
 import com.obra.obras.domain.entity.Inspecao;
 import com.obra.obras.domain.repository.InspecaoRepository;
 import com.obra.obras.exception.RegraNegocioException;
+import com.obra.obras.rest.dto.InspecaoDTO;
 import com.obra.obras.service.InspecaoService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -31,11 +32,11 @@ public class InspecaoController {
         return inspecaoService
                 .obterInspecao(id)
                 .orElseThrow(() -> new RegraNegocioException("Inspecao não encontrada. " +
-                "Por favor, verifique os campos obrigatorios e tente novamente. "));
+                        "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 
     @GetMapping
-    public List<Inspecao> find(Inspecao filtro) {
+    public List<Inspecao> find(InspecaoDTO filtro) {
         ExampleMatcher encontrar = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
@@ -47,8 +48,8 @@ public class InspecaoController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public Inspecao save(@RequestBody Inspecao inspecao) {
-        return inspecaoService.salvar(inspecao);
+    public Inspecao save(@RequestBody InspecaoDTO inspecaoDTO) {
+        return inspecaoService.salvar(inspecaoDTO);
     }
 
     @DeleteMapping("{id}")

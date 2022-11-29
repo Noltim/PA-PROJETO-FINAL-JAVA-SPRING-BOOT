@@ -3,6 +3,7 @@ package com.obra.obras.rest.controller;
 import com.obra.obras.domain.entity.ObraInspecao;
 import com.obra.obras.domain.repository.ObraInspecaoRepository;
 import com.obra.obras.exception.RegraNegocioException;
+import com.obra.obras.rest.dto.ObraInspecaoDTO;
 import com.obra.obras.service.ObraInspecaoService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -21,7 +22,8 @@ public class ObraInspecaoController {
     private ObraInspecaoRepository obraInspecaoRepository;
     private ObraInspecaoService obraInspecaoService;
 
-    public ObraInspecaoController(ObraInspecaoRepository obraInspecaoRepository, ObraInspecaoService obraInspecaoService) {
+    public ObraInspecaoController(ObraInspecaoRepository obraInspecaoRepository,
+            ObraInspecaoService obraInspecaoService) {
         this.obraInspecaoRepository = obraInspecaoRepository;
         this.obraInspecaoService = obraInspecaoService;
     }
@@ -36,7 +38,7 @@ public class ObraInspecaoController {
     }
 
     @GetMapping
-    public List<ObraInspecao> find(ObraInspecao filtro) {
+    public List<ObraInspecao> find(ObraInspecaoDTO filtro) {
         ExampleMatcher encontrar = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
@@ -48,8 +50,8 @@ public class ObraInspecaoController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    public ObraInspecao save(@RequestBody ObraInspecao obraInspecao) {
-        return obraInspecaoService.salvar(obraInspecao);
+    public ObraInspecao save(@RequestBody ObraInspecaoDTO obraInspecaoDTO) {
+        return obraInspecaoService.salvar(obraInspecaoDTO);
     }
 
     @DeleteMapping("{id}")

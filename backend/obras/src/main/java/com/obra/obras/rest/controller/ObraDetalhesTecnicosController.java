@@ -3,6 +3,7 @@ package com.obra.obras.rest.controller;
 import com.obra.obras.domain.entity.ObraDetalhesTecnicos;
 import com.obra.obras.domain.repository.ObraDetalhesTecnicosRepository;
 import com.obra.obras.exception.RegraNegocioException;
+import com.obra.obras.rest.dto.ObraDetalhesTecnicosDTO;
 import com.obra.obras.service.ObraDetalhesTecnicosService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -20,17 +21,14 @@ public class ObraDetalhesTecnicosController {
     private ObraDetalhesTecnicosRepository obraDetalhesTecnicosRepository;
     private ObraDetalhesTecnicosService obraDetalhesTecnicosService;
 
-    public ObraDetalhesTecnicosController(ObraDetalhesTecnicosRepository obraDetalhesTecnicosRepository, ObraDetalhesTecnicosService obraDetalhesTecnicosService) {
+    public ObraDetalhesTecnicosController(ObraDetalhesTecnicosRepository obraDetalhesTecnicosRepository,
+            ObraDetalhesTecnicosService obraDetalhesTecnicosService) {
         this.obraDetalhesTecnicosRepository = obraDetalhesTecnicosRepository;
         this.obraDetalhesTecnicosService = obraDetalhesTecnicosService;
     }
 
     @GetMapping(value = "{id}")
     @ResponseStatus(OK)
-    /*
-     * O tipo de retorno deve ser GetObraDetalhesTecnicosDTO, mas ainda em busca da
-     * logica para converter
-     */
     public ObraDetalhesTecnicos getDetalhesObraById(@PathVariable Integer id) {
         return obraDetalhesTecnicosService
                 .obterObraDetalhesTecnicos(id)
@@ -38,29 +36,8 @@ public class ObraDetalhesTecnicosController {
                         "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 
-    /*
-     * Em busca da resolução do erro, precisa ser feita uma conversão entre o tipo
-     * obraDetalhesTecnicos para ObraDetalhesTecnicosDTO
-     */
-    /*
-     * private GetObraDetalhesTecnicosDTO converter(ObraDetalhesTecnicos
-     * obraDetalhesTecnicos) {
-     * return GetObraDetalhesTecnicosDTO
-     * .builder()
-     * .id(obraDetalhesTecnicos.getId())
-     * .obraId(obraDetalhesTecnicos.getObraId())
-     * .tipo(obraDetalhesTecnicos.getTipo())
-     * .risco(obraDetalhesTecnicos.getRisco())
-     * .build();
-     * }
-     */
-
     @GetMapping
-    /*
-     * O tipo de retorno deve ser GetObraDetalhesTecnicosDTO, mas ainda em busca da
-     * logica para converter
-     */
-    public List<ObraDetalhesTecnicos> find(ObraDetalhesTecnicos filtro) {
+    public List<ObraDetalhesTecnicos> find(ObraDetalhesTecnicosDTO filtro) {
         ExampleMatcher encontrar = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
@@ -72,12 +49,8 @@ public class ObraDetalhesTecnicosController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    /*
-     * O tipo de retorno deve ser GetObraDetalhesTecnicosDTO, mas ainda em busca da
-     * logica para converter
-     */
-    public ObraDetalhesTecnicos save(@RequestBody ObraDetalhesTecnicos obraDetalhesTecnicos) {
-        return obraDetalhesTecnicosService.salvar(obraDetalhesTecnicos);
+    public ObraDetalhesTecnicos save(@RequestBody ObraDetalhesTecnicosDTO obraDetalhesTecnicosDTO) {
+        return obraDetalhesTecnicosService.salvar(obraDetalhesTecnicosDTO);
     }
 
     @DeleteMapping("{id}")

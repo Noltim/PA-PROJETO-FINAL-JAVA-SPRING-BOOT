@@ -3,6 +3,7 @@ package com.obra.obras.rest.controller;
 import com.obra.obras.domain.entity.ObraLocalizacao;
 import com.obra.obras.domain.repository.ObraLocalizacaoRepository;
 import com.obra.obras.exception.RegraNegocioException;
+import com.obra.obras.rest.dto.ObraLocalizacaoDTO;
 import com.obra.obras.service.ObraLocalizacaoService;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -21,17 +22,14 @@ public class ObraLocalizacaoController {
     private ObraLocalizacaoRepository obraLocalizacaoRepository;
     private ObraLocalizacaoService obraLocalizacaoService;
 
-    public ObraLocalizacaoController(ObraLocalizacaoRepository obraLocalizacaoRepository, ObraLocalizacaoService obraLocalizacaoService) {
+    public ObraLocalizacaoController(ObraLocalizacaoRepository obraLocalizacaoRepository,
+            ObraLocalizacaoService obraLocalizacaoService) {
         this.obraLocalizacaoRepository = obraLocalizacaoRepository;
         this.obraLocalizacaoService = obraLocalizacaoService;
     }
 
     @GetMapping(value = "{id}")
     @ResponseStatus(OK)
-    /*
-     * O tipo de retorno deve ser GetObraLocalizacaoDTO, mas ainda em busca da
-     * logica para converter
-     */
     public ObraLocalizacao getObraLocalById(@PathVariable Integer id) {
         return obraLocalizacaoService
                 .obterObraLocalizacao(id)
@@ -40,28 +38,8 @@ public class ObraLocalizacaoController {
                                 "Por favor, verifique os campos obrigatorios e tente novamente. "));
     }
 
-    /*
-     * Em busca da resolução do erro, precisa ser feita uma conversão entre o tipo
-     * obraLocalizacao para ObraLocalizacaoDTO
-     * private GetObraLocalizacaoDTO converter(ObraLocalizacao obraLocalizacao) {
-     * return GetObraLocalizacaoDTO
-     * .builder()
-     * .id(obraLocalizacao.getId())
-     * .obraId(obraLocalizacao.getObraId())
-     * .cidade(obraLocalizacao.getCidade())
-     * .estado(obraLocalizacao.getEstado())
-     * .longitude(obraLocalizacao.getLongitude())
-     * .latitude(obraLocalizacao.getLatitude())
-     * .build();
-     * }
-     */
-
     @GetMapping
-    /*
-     * O tipo de retorno deve ser GetObraLocalizacaoDTO, mas ainda em busca da
-     * logica para converter
-     */
-    public List<ObraLocalizacao> find(ObraLocalizacao filtro) {
+    public List<ObraLocalizacao> find(ObraLocalizacaoDTO filtro) {
         ExampleMatcher encontrar = ExampleMatcher
                 .matching()
                 .withIgnoreCase()
@@ -72,12 +50,8 @@ public class ObraLocalizacaoController {
 
     @PostMapping
     @ResponseStatus(CREATED)
-    /*
-     * O tipo de retorno deve ser GetObraLocalizacaoDTO, mas ainda em busca da
-     * logica para converter
-     */
-    public ObraLocalizacao save(@RequestBody ObraLocalizacao obraLocalizacao) {
-        return obraLocalizacaoService.salvar(obraLocalizacao);
+    public ObraLocalizacao save(@RequestBody ObraLocalizacaoDTO obraLocalizacaoDTO) {
+        return obraLocalizacaoService.salvar(obraLocalizacaoDTO);
     }
 
     @DeleteMapping("{id}")

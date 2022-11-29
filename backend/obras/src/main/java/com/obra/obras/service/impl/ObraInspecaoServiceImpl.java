@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.obra.obras.domain.entity.ObraInspecao;
 import com.obra.obras.domain.repository.ObraInspecaoRepository;
 import com.obra.obras.exception.RegraNegocioException;
+import com.obra.obras.rest.dto.ObraInspecaoDTO;
 import com.obra.obras.service.ObraInspecaoService;
 
 import lombok.RequiredArgsConstructor;
@@ -21,14 +22,14 @@ public class ObraInspecaoServiceImpl implements ObraInspecaoService {
 
     @Override
     @Transactional
-    public ObraInspecao salvar(ObraInspecao obraInspecao) {
+    public ObraInspecao salvar(ObraInspecaoDTO obraInspecaoDTO) {
 
         ObraInspecao obraInspecaoNovo = new ObraInspecao();
-        obraInspecaoNovo.setObraId(obraInspecao.getObraId());
-        obraInspecaoNovo.setFrequencia(obraInspecao.getFrequencia());
-        obraInspecaoNovo.setMes(obraInspecao.getMes());
-        obraInspecaoNovo.setStatus(obraInspecao.getStatus());
-        obraInspecaoNovo.setPrioridade(obraInspecao.getPrioridade());
+        obraInspecaoNovo.setObraId(obraInspecaoDTO.getObraId());
+        obraInspecaoNovo.setFrequencia(obraInspecaoDTO.getFrequencia());
+        obraInspecaoNovo.setMes(obraInspecaoDTO.getMes());
+        obraInspecaoNovo.setStatus(obraInspecaoDTO.getStatus());
+        obraInspecaoNovo.setPrioridade(obraInspecaoDTO.getPrioridade());
 
         return obraInspecaoRepository.save(obraInspecaoNovo);
     }
