@@ -4,11 +4,11 @@ Aplicação usando o framework Java Spring Boot, MySQL, GIt, Postman e nodeJS
 
 ## 🚀 Começando
 
-Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
+Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste. 
 
-Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
+Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto. 
 
-### 📋 Pré-requisitos
+### 📋 Pré-requisitos 
 
 De que coisas você precisa para instalar o software e como instalá-lo?
 
@@ -20,38 +20,38 @@ De que coisas você precisa para instalar o software e como instalá-lo?
 - NodeJS
 ```
 
-### 🔧 Instalação
+### 🔧 Instalação 
 
-Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução.
+Uma série de exemplos passo-a-passo que informam o que você deve executar para ter um ambiente de desenvolvimento em execução. 
 
-Siga as etapas:
-
-```
-1°- Verifique se você possui o JDK 11
-```
-```
-1.1° - Caso não tenha clique no link a baixo.
-```
-- **[JDK](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html)**
+Siga as etapas: 
 
 ```
-2°- Verifique se você possui o VSC
+1°- Verifique se você possui o JDK 11 
 ```
 ```
-2.1° - Caso não tenha clique no link a baixo.
+1.1° - Caso não tenha clique no link a baixo. 
 ```
-- **[VSC](https://code.visualstudio.com/download)**
+- **[JDK](https://www.oracle.com/br/java/technologies/javase/jdk11-archive-downloads.html)** 
 
 ```
-3°- Verifique se você possui o MySQL server e MySQL workbench
+2°- Verifique se você possui o VSC 
 ```
 ```
-3.1° - Caso não tenha clique no link a baixo.
+2.1° - Caso não tenha clique no link a baixo. 
 ```
-- **[MySQL](https://dev.mysql.com/downloads/#:~:text=MySQL%20Installer%20for%20Windows)**
+- **[VSC](https://code.visualstudio.com/download)** 
 
 ```
-4°- Verifique se você possui o Postman
+3°- Verifique se você possui o MySQL server e MySQL workbench 
+```
+```
+3.1° - Caso não tenha clique no link a baixo. 
+```
+- **[MySQL](https://dev.mysql.com/downloads/#:~:text=MySQL%20Installer%20for%20Windows)** 
+
+```
+4°- Verifique se você possui o Postman 
 ```
 ```
 4.1° - Caso não tenha clique no link a baixo.
@@ -59,7 +59,7 @@ Siga as etapas:
 - **[Postman](https://www.postman.com/downloads/)**
 
 ```
-5°- Verifique se você possui o NodeJS
+5°- Verifique se você possui o NodeJS 
 ```
 ```
 5.1° - Caso não tenha clique no link a baixo.
@@ -102,16 +102,16 @@ Para conseguir implantar o projeto siga as seguintes recomendações:
 ```
 
 
-Para conferir os endpoints e como aplicar confira o [DOCUMENTAÇÃO SWAGGER](http://localhost:8080/swagger-ui/index.html#/) da api.
+Para conferir os endpoints e como aplicar confira o [DOCUMENTAÇÃO SWAGGER](http://localhost:8080/swagger-ui/index.html#/) da api. 
 
 
-## 📌 Versão
+## 📌 Versão 
 
-Nós usamos [GIT](https://git-scm.com/downloads) para controle de versão no [GITHUB](https://github.com/Noltim/PA-PROJETO-FINAL-JAVA-SPRING-BOOT). Para as versões disponíveis, observe as [tags neste repositório](https://github.com/Noltim/PA-PROJETO-FINAL-JAVA-SPRING-BOOT). 
+Nós usamos [GIT](https://git-scm.com/downloads) para controle de versão no [GITHUB](https://github.com/Noltim/PA-PROJETO-FINAL-JAVA-SPRING-BOOT). Para as versões disponíveis, observe as [tags neste repositório](https://github.com/Noltim/PA-PROJETO-FINAL-JAVA-SPRING-BOOT).  
 
 ## ✒️ Autores
 
-Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
+Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início 
 
 * **José Milton de Oliveira Neto** - *SM/PO/Dev. Backend* - [Noltim](https://github.com/Noltim)
 * **Dielder Gabriel Arruda Leal** - *Dev. Backend* - [Dielder](https://github.com/Dielder)
@@ -124,13 +124,13 @@ Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 
 
 
-Você também pode ver a lista de todos os [colaboradores](https://github.com/Noltim/PA-PROJETO-FINAL-JAVA-SPRING-BOOT/graphs/contributors) que participaram deste projeto.
+Você também pode ver a lista de todos os [colaboradores](https://github.com/Noltim/PA-PROJETO-FINAL-JAVA-SPRING-BOOT/graphs/contributors) que participaram deste projeto. 
 
 
-## 🎁 Expressões de gratidão
+## 🎁 Expressões de gratidão 
 
-* Conte a outras pessoas sobre este projeto 📢;
-* Convide alguém da equipe para uma cerveja 🍺;
+* Conte a outras pessoas sobre este projeto 📢; 
+* Convide alguém da equipe para uma cerveja 🍺; 
 
 
 
