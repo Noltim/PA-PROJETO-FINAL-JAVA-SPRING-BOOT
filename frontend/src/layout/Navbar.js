@@ -1,7 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Navbar() {
+
+    const [token, setToken] = useState()
+    let navigate = useNavigate();
+
+    useEffect(() => {
+        setToken(localStorage.getItem('user'))
+        console.log(token)
+    }, [token])
+
+        // logout the user
+        const handleLogout = () => {
+            console.log("saiu")
+            localStorage.clear();
+            navigate("/login")    
+        };
+
     return (
 
         <div>
@@ -46,12 +62,19 @@ export default function Navbar() {
                         </button>
 
                         <div>
-                            <Link className="btn btn-dark mx-1" to="/adduser">
-                                Cadastrar
-                            </Link>
-                            <Link className="btn btn-dark mx-1" to="/login">
-                                Login
-                            </Link>
+                            {token === null &&
+                                <Link className="btn btn-dark mx-1" to="/adduser">
+                                    Cadastrar
+                                </Link>}
+                            {token === null &&
+                                <Link className="btn btn-dark mx-1" to="/login">
+                                    Login
+                                </Link>}
+
+                            {token !== null &&
+                                <button className="btn btn-dark mx-1" onClick={handleLogout}>
+                                    Sair
+                                </button>}
                         </div>
                     </div>
                 </div>

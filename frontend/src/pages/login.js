@@ -62,9 +62,9 @@ const App = () => {
     // Se houver um usuário, mostre a mensagem abaixo
     if (user) {
         return (
-            <div>
+            <div className="text-light">
                 {user.name} is loggged in
-                <button onClick={handleLogout} className="btn btn-outline-danger mx-2" to="/">logout</button>
+                <button onClick={handleLogout} className="btn btn-outline-danger mx-2 " to="/login">logout</button>
             </div>
         );
     }
