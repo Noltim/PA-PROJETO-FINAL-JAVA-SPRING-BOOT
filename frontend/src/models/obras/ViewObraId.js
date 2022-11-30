@@ -28,7 +28,7 @@ export default function ViewObraId() {
   }, []);
 
   return (
-    <div className='conteiner'>
+    <div className='conteiner text-light'>
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
           <h2 className="text-center m-4"> Obra Detalhes id : ${obra.id}</h2>

@@ -25,7 +25,7 @@ export default function ViewObraLocal() {
   }
 
   return (
-    <div className='conteiner'>
+    <div className='conteiner text-light'>
 
       <div className='p-5'>
         <table className="table border shadow">

@@ -35,7 +35,7 @@ export default function ViewObra() {
   }
 
   return (
-    <div className='conteiner'>
+    <div className='conteiner text-light'>
 
       <div className='p-5'>
         <table className="table border shadow">

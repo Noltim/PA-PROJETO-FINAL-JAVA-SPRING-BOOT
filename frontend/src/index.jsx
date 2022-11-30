@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { axiosInstance } from "../api/api"
-import '../login.css'
 
 const App = () => {
     const [login, setLogin] = useState("");
@@ -71,8 +70,7 @@ const App = () => {
 
     // Se não houver um usuário, mostre o formulário de login
     return (
-
-        <div class="container-login">
+        <div class="container">
             <div class="container2">
                 <h2> Authentication</h2>
                 <form onSubmit={handleSubmit}>
@@ -94,43 +92,7 @@ const App = () => {
                 </form>
             </div>
         </div>
-        /* <div className='conteiner'>
-             <div className="row">
-                 <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-                     <h2 className="text-center m-4"> Authentication</h2>
-                     <form onSubmit={handleSubmit}>
-                         <div className="mb-3">
-                             <label htmlFor="login" className='form-label'>Login do usuário: </label>
-                             <input
-                                 type="text"
-                                 className="form-control"
-                                 name='login'
-                                 value={login}
-                                 placeholder="insira um nome de usuário"
-                                 onChange={({ target }) => setLogin(target.value)}
-                             />
-                         </div>
-                         <div className="mb-3">
- 
-                             <label htmlFor="senha" className='form-label'>Senha: </label>
-                             <input
-                                 type="password"
-                                 className="form-control"
-                                 name='senha'
-                                 value={senha}
-                                 placeholder="insira uma senha"
-                                 onChange={({ target }) => setSenha(target.value)}
-                             />
- 
-                         </div>
-                         <button type="submit" className="btn btn-outline-success">Login</button>
-                         <Link className="btn btn-outline-danger mx-2" to="/">
-                             Cancel
-                         </Link>
-                     </form>
-                 </div>
-             </div>
-         </div>*/
+        
     );
 };
 

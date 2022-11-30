@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function DeleteObraLocal() {
   return (
-    <div className='conteiner'>
+    <div className='conteiner text-light'>
         <div className="row">
             <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
                 <h2 className="text-center m-4"> Delete Obra Localização</h2>
