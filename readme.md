@@ -119,7 +119,8 @@ Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 * **Alex Fernando Alves da Silva** - *A declarar* - [Alex](https://github.com/alexfrnn)
 * **João Vitor Pedrosa De Lira** - *Dev. Front* - [Vitor](https://github.com/vitorliras)
 * **Matheus Henrique Chagas** - *Dev. Front* - [Matheus](https://github.com/MatheusChagas123)
-* **Davi Pereira Morato Costa** - *A declarar* - [Davi](https://github.com/DaviMorato)
+* **Davi Pereira Morato Costa** - *Dev. Front* - [Davi](https://github.com/DaviMorato)
+* **Italo José Cavalcanti de Souza** - *Dev. Front* - [Italo](https://github.com/italojcs)
 
 
 
