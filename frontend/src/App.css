@@ -26,6 +26,14 @@
   color: white;
 }
 
+.scrollbar{
+  overflow: hidden;
+}
+
+.cor-fundo{
+  background-color: #20203C;
+}
+
 .App-link {
   color: #61dafb;
 }

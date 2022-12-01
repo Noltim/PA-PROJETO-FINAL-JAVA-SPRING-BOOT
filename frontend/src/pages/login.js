@@ -3,16 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { axiosInstance } from "../api/api"
 import '../login.css'
+import Navbar from "../layout/Navbar";
 
 const App = () => {
     const [login, setLogin] = useState("");
     const [senha, setSenha] = useState("");
     const [user, setUser] = useState();
 
-
     let navigate = useNavigate();
-
-
 
     useEffect(() => {
         const loggedInUser = localStorage.getItem(user);
@@ -28,8 +26,6 @@ const App = () => {
         navigate("/")
 
     };
-
-
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -52,14 +48,13 @@ const App = () => {
 
         axiosInstance.interceptors.request.use((config) => {
             config.headers.token = token;
-        })
+        });
+
+       // navigate("/")
 
     };
 
-
-
-
-    // Se houver um usuário, mostre a mensagem abaixo
+    //Se houver um usuário, mostre a mensagem abaixo
     if (user) {
         return (
             <div className="text-light">
@@ -94,43 +89,6 @@ const App = () => {
                 </form>
             </div>
         </div>
-        /* <div className='conteiner'>
-             <div className="row">
-                 <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-                     <h2 className="text-center m-4"> Authentication</h2>
-                     <form onSubmit={handleSubmit}>
-                         <div className="mb-3">
-                             <label htmlFor="login" className='form-label'>Login do usuário: </label>
-                             <input
-                                 type="text"
-                                 className="form-control"
-                                 name='login'
-                                 value={login}
-                                 placeholder="insira um nome de usuário"
-                                 onChange={({ target }) => setLogin(target.value)}
-                             />
-                         </div>
-                         <div className="mb-3">
- 
-                             <label htmlFor="senha" className='form-label'>Senha: </label>
-                             <input
-                                 type="password"
-                                 className="form-control"
-                                 name='senha'
-                                 value={senha}
-                                 placeholder="insira uma senha"
-                                 onChange={({ target }) => setSenha(target.value)}
-                             />
- 
-                         </div>
-                         <button type="submit" className="btn btn-outline-success">Login</button>
-                         <Link className="btn btn-outline-danger mx-2" to="/">
-                             Cancel
-                         </Link>
-                     </form>
-                 </div>
-             </div>
-         </div>*/
     );
 };
 

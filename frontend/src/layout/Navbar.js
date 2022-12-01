@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar(props) {
 
     const [token, setToken] = useState()
     let navigate = useNavigate();
@@ -9,21 +9,24 @@ export default function Navbar() {
     useEffect(() => {
         setToken(localStorage.getItem('user'))
         console.log(token)
+        if(props.token)
+            setToken(props.token)
     }, [token])
 
-        // logout the user
-        const handleLogout = () => {
-            console.log("saiu")
-            localStorage.clear();
-            navigate("/login")    
-        };
+    // logout the user
+    const handleLogout = () => {
+        console.log("saiu")
+        localStorage.clear();
+        setToken(null)
+        navigate("/login")
+    };
 
     return (
 
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid"  >
-                    <a className="navbar-brand " href="/">
+                    <a className="navbar-brand" href="/">
                         Projeto Triplex
                     </a>
                     <button className="navbar-toggler"

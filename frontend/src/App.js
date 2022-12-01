@@ -28,10 +28,20 @@ import ViewInspecaoById from './models/Inspecao/ViewInspecaoById';
 
 
 function App() {
+
+  // const [token, setToken] = useState()
+    // let navigate = useNavigate();
+
+    // useEffect(() => {
+    //     setToken(localStorage.getItem('user'))
+    //     console.log(token)
+    // }, [token])
+
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        {/* {token ? <Navbar token={token} /> : <Navbar />} */}
+        <Navbar/>
         <Routes>
           <Route exact path="/login" element={<Login />} />
 

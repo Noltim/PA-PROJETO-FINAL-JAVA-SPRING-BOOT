@@ -47,7 +47,7 @@ export default function ViewDetalhesObrasById() {
                             </ul>
                         </div>
                     </div>
-                    <Link className="btn btn-primary my-2" to="/viewobrainspecao">Voltar</Link>
+                    <Link className="btn btn-primary my-2" to="/viewobradetalhes">Voltar</Link>
                 </div>
             </div>
         </div>

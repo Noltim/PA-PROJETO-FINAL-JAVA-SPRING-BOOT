@@ -43,3 +43,7 @@
     border: 1px solid #5599b6;
     margin: 5px;
 }
+
+td , th {
+    color: #fff;
+}

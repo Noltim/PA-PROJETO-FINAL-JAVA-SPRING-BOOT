@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 
 import '../home.css'
 
-
 export default function Home() {
 
 
@@ -69,9 +68,7 @@ export default function Home() {
                 <Link className='botao-view' to="/viewinspecao">View</Link>
               </td>
             </tr>
-
-
-
+            
           </tbody>
         </table>
       </div>
