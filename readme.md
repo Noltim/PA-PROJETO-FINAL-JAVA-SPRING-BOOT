@@ -116,7 +116,7 @@ Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
 * **José Milton de Oliveira Neto** - *SM/PO/Dev. Backend* - [Noltim](https://github.com/Noltim)
 * **Dielder Gabriel Arruda Leal** - *Dev. Backend* - [Dielder](https://github.com/Dielder)
 * **Leonardo Emanuel Souza dos Santos** - *Dev. Backend* - [Leo](https://github.com/LeonardoEsantos)
-* **Alex Fernando Alves da Silva** - *A declarar* - [Alex](https://github.com/alexfrnn)
+* **Alex Fernando Alves da Silva** - *Dev. Front* - [Alex](https://github.com/alexfrnn)
 * **João Vitor Pedrosa De Lira** - *Dev. Front* - [Vitor](https://github.com/vitorliras)
 * **Matheus Henrique Chagas** - *Dev. Front* - [Matheus](https://github.com/MatheusChagas123)
 * **Davi Pereira Morato Costa** - *Dev. Front* - [Davi](https://github.com/DaviMorato)
