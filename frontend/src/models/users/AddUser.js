@@ -23,7 +23,7 @@ export default function AddUser() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:8080/api/usuarios", user)
-    navigate("/")
+    navigate("/login")
 
   };
 
@@ -60,7 +60,7 @@ export default function AddUser() {
             <button type="submit" class="login" >
               OK
             </button>
-            <Link to="/" class="cancel">
+            <Link to="/login" class="cancel">
               Cancel
             </Link>
           </div>

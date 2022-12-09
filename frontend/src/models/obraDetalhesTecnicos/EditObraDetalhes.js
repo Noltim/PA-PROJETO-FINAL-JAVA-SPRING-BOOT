@@ -152,7 +152,7 @@ export default function EditObraDetalhes() {
             </div>
 
             <button type='submit' className='btn btn-outline-primary'>Salvar</button>
-            <Link className="btn btn-outline-danger mx-2" to="/">
+            <Link className="btn btn-outline-danger mx-2" to="/viewobradetalhes">
               Cancel
             </Link>
 
