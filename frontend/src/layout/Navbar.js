@@ -1,13 +1,32 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-export default function Navbar() {
+export default function Navbar(props) {
+
+    const [token, setToken] = useState()
+    let navigate = useNavigate();
+
+    useEffect(() => {
+        setToken(localStorage.getItem('user'))
+        console.log(token)
+        if(props.token)
+            setToken(props.token)
+    }, [token])
+
+    // logout the user
+    const handleLogout = () => {
+        console.log("saiu")
+        localStorage.clear();
+        setToken(null)
+        navigate("/login")
+    };
+
     return (
 
         <div>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div className="container-fluid"  >
-                    <a className="navbar-brand " href="/">
+                    <a className="navbar-brand" href="/">
                         Projeto Triplex
                     </a>
                     <button className="navbar-toggler"
@@ -46,12 +65,19 @@ export default function Navbar() {
                         </button>
 
                         <div>
-                            <Link className="btn btn-dark mx-1" to="/adduser">
-                                Cadastrar
-                            </Link>
-                            <Link className="btn btn-dark mx-1" to="/login">
-                                Login
-                            </Link>
+                            {token === null &&
+                                <Link className="btn btn-dark mx-1" to="/adduser">
+                                    Cadastrar
+                                </Link>}
+                            {token === null &&
+                                <Link className="btn btn-dark mx-1" to="/login">
+                                    Login
+                                </Link>}
+
+                            {token !== null &&
+                                <button className="btn btn-dark mx-1" onClick={handleLogout}>
+                                    Sair
+                                </button>}
                         </div>
                     </div>
                 </div>

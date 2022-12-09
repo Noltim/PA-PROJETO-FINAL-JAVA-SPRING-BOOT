@@ -6,10 +6,6 @@ import { axiosInstance } from '../../api/api';
 export default function ViewObra() {
   const [obras, setObras] = useState([]);
 
-  // const onInputChange = (e) => {
-  //   setObras({ ...user, [e.target.name]: e.target.value })
-  // };
-
   useEffect(() => {
     loadObras();
   }, []);
@@ -19,12 +15,7 @@ export default function ViewObra() {
   
   let token = localStorage.getItem("user")
   const loadObras = async () => {
-    // const result = await axiosInstance.post("http://localhost:8080/api/obras", user, {headers:{"Authorization": token}})
-    // const result = await axiosInstance.get(`http://localhost:8080/api/obras`, { headers: { "Authorization": token } })
     const result = await axios.get(`http://localhost:8080/api/obras`, { headers: { "Authorization": token } })
-
-    // const result = await axiosInstance.get("http://localhost:8080/api/obras", obras, {headers:{"Authorization": token}})
-    // navigate("/")
     console.log(result.data);
     setObras(result.data);
   };
@@ -35,7 +26,7 @@ export default function ViewObra() {
   }
 
   return (
-    <div className='conteiner'>
+    <div className='conteiner text-light'>
 
       <div className='p-5'>
         <table className="table border shadow">

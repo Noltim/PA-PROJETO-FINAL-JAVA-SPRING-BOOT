@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { axiosInstance } from "../api/api"
-import '../login.css'
-import Navbar from "../layout/Navbar";
 
 const App = () => {
     const [login, setLogin] = useState("");
     const [senha, setSenha] = useState("");
     const [user, setUser] = useState();
 
+
     let navigate = useNavigate();
+
+
 
     useEffect(() => {
         const loggedInUser = localStorage.getItem(user);
@@ -26,6 +27,8 @@ const App = () => {
         navigate("/")
 
     };
+
+
 
     const handleSubmit = async e => {
         e.preventDefault();
@@ -48,26 +51,26 @@ const App = () => {
 
         axiosInstance.interceptors.request.use((config) => {
             config.headers.token = token;
-        });
-
-       // navigate("/")
+        })
 
     };
 
-    //Se houver um usuário, mostre a mensagem abaixo
+
+
+
+    // Se houver um usuário, mostre a mensagem abaixo
     if (user) {
         return (
-            <div className="text-light">
+            <div>
                 {user.name} is loggged in
-                <button onClick={handleLogout} className="btn btn-outline-danger mx-2 " to="/login">logout</button>
+                <button onClick={handleLogout} className="btn btn-outline-danger mx-2" to="/">logout</button>
             </div>
         );
     }
 
     // Se não houver um usuário, mostre o formulário de login
     return (
-
-        <div class="container-login">
+        <div class="container">
             <div class="container2">
                 <h2> Authentication</h2>
                 <form onSubmit={handleSubmit}>
@@ -89,6 +92,7 @@ const App = () => {
                 </form>
             </div>
         </div>
+        
     );
 };
 

@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container-login{
+    width: 100%;
+    height: 94vh;
+    background-color: #20203C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container2{
+    text-align: center;
+    border-radius: 10px;
+    border: 1px solid white;
+    width: 800px;
+    height: 400px;
+}
+
+.container2 h2{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    color: white;
+}
+
+.login-usuario{
+    display: flex;
+    flex-direction: column;
+}
+
+.login-usuario label{
+    margin: 10px;
+    color: white;
+}
+
+.login-usuario input{
+    margin: auto;
+    width: 700px;
+    height: 35px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.senha-usuario{
+    display: flex;
+    flex-direction: column;
+}
+
+.senha-usuario input{
+    margin: auto;
+    width: 700px;
+    height: 35px;
+    padding-left: 10px;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.senha-usuario label{
+    margin: 10px;
+    color: white;
+}
+
+.login{
+    margin-right: 5px;
+    margin-top: 20px;
+    width: 80px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid green;
+    color: green;
+    background-color: #20203C;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.login:hover{
+    background-color: green;
+    color: white;
+}
+
+.cancel{
+    width: 80px;
+    padding: 15px;
+    border-radius: 10px;
+    color: red;
+    border: 1px solid red;
+    background-color: #20203C;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.cancel:hover{
+    background-color: red;
+    color: white;
+}
+
+.alinha-botao{
+    margin-top: 20px;
+}

@@ -41,7 +41,7 @@ export default function EditObra() {
   }
 
   return (
-    <div className='conteiner'>
+    <div className='conteiner text-light cor-fundo'>
       <div className='row'>
         <div className='col-md-6 offset-md-3 border rounded p-4 mt-2'>
           <h2 className='text-center m-4'>Editar Obras</h2>

@@ -31,7 +31,7 @@ export default function ViewObraLocalById() {
 
 
   return (
-    <div className='conteiner'>
+    <div className='conteiner text-light'>
       <div className="row">
         <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
           <div className="card">

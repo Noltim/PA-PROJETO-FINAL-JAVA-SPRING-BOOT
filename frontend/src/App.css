@@ -1,5 +1,7 @@
 .App {
+  height: 100vh;
   text-align: center;
+  background-color: #20203C;
 }
 
 .App-logo {
@@ -22,6 +24,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.scrollbar{
+  overflow: hidden;
+}
+
+.cor-fundo{
+  background-color: #20203C;
 }
 
 .App-link {

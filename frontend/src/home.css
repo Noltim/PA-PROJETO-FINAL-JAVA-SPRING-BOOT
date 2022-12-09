@@ -1,0 +1,49 @@
+.main-table{
+    width: 80%;
+    margin: auto;
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.151);
+}
+
+.main-table thead{
+    background-color: black;
+    height: 60px;
+}
+
+.main-table tr{
+    border: 1px solid rgba(255, 255, 255, 0.151);;
+}
+
+.main-table td{
+    border: 1px solid rgba(255, 255, 255, 0.151);;
+}
+
+.main-table .table-linhas{
+    height: 50px;
+}
+
+.main-table .cor-sim{
+    background-color: #28284b;
+}
+
+.main-table .table-linhas .botao-create{
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #5599b6;
+    margin: 5px;
+}
+
+.main-table .table-linhas .botao-view{
+    color: #5599b6;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #5599b6;
+    margin: 5px;
+}
+
+td , th {
+    color: #fff;
+}

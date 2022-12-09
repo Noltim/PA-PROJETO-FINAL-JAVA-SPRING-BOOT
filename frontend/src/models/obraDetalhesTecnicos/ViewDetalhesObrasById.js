@@ -25,7 +25,7 @@ export default function ViewDetalhesObrasById() {
 
 
     return (
-        <div className='conteiner'>
+        <div className='conteiner text-light'>
             <div className="row">
                 <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
                     <div className="card">
@@ -47,7 +47,7 @@ export default function ViewDetalhesObrasById() {
                             </ul>
                         </div>
                     </div>
-                    <Link className="btn btn-primary my-2" to="/viewobrainspecao">Voltar</Link>
+                    <Link className="btn btn-primary my-2" to="/viewobradetalhes">Voltar</Link>
                 </div>
             </div>
         </div>

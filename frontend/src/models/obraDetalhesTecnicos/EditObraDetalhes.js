@@ -108,7 +108,7 @@ export default function EditObraDetalhes() {
   };
 
   return (
-    <div className='conteiner'>
+    <div className='conteiner text-light'>
       <div className='row'>
         <div className='col-md-6 offset-md-3 border rounded p-4 mt-2'>
           <h2 className='text-center m-4'>Registro Obras Inspenção</h2>
@@ -152,7 +152,7 @@ export default function EditObraDetalhes() {
             </div>
 
             <button type='submit' className='btn btn-outline-primary'>Salvar</button>
-            <Link className="btn btn-outline-danger mx-2" to="/">
+            <Link className="btn btn-outline-danger mx-2" to="/viewobradetalhes">
               Cancel
             </Link>
 

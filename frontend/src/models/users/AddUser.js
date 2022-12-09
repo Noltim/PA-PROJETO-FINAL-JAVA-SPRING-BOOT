@@ -13,7 +13,7 @@ export default function AddUser() {
     senha: ""
   })
 
-  const { login, senha} = user
+  const { login, senha } = user
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value })
@@ -23,50 +23,48 @@ export default function AddUser() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:8080/api/usuarios", user)
-    navigate("/")
-    
+    navigate("/login")
+
   };
 
   return (
-    <div className='conteiner'>
-      <div className="row">
-        <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
-          <h2 className="text-center m-4"> Register User</h2>
-          <form onSubmit={(e) => onSubmit(e)}>
-            <div className="mb-3">
-              <label htmlFor='Login' className='form-label'>
-                Login
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder='Enter your login'
-                name='login'
-                value={login}
-                onChange={(e) => onInputChange(e)}
-              />
-            </div>
-            <div className="mb-3">
-              <label htmlFor='Senha' className='form-label'>
-                Senha
-              </label>
-              <input
-                type="password"
-                className="form-control"
-                placeholder='Enter your senha'
-                name='senha'
-                value={senha}
-                onChange={(e) => onInputChange(e)}
-              />
-            </div>
-            <button type="submit" className="btn btn-outline-success">
+    <div class="container-login">
+      <div class="container2">
+        <h2 > Register User</h2>
+        <form onSubmit={(e) => onSubmit(e)}>
+          <div class="login-usuario">
+            <label htmlFor='Login'>
+              Login
+            </label>
+            <input
+              type="text"
+              placeholder='Enter your login'
+              name='login'
+              value={login}
+              onChange={(e) => onInputChange(e)}
+            />
+          </div>
+          <div  class="senha-usuario">
+            <label htmlFor='Senha'>
+              Senha
+            </label>
+            <input
+              type="password"
+              placeholder='Enter your senha'
+              name='senha'
+              value={senha}
+              onChange={(e) => onInputChange(e)}
+            />
+          </div>
+          <div class="alinha-botao">
+            <button type="submit" class="login" >
               OK
             </button>
-            <Link className="btn btn-outline-danger mx-2" to="/">
+            <Link to="/login" class="cancel">
               Cancel
             </Link>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   )
